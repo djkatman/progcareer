@@ -34,7 +34,7 @@ const categoryCount = categories.map(cat => ({
     ) : (
       <div class="post-grid">
         {posts.map(post => (
-          <a href={`/blog/${post.slug}/`} class="post-card">
+          <a href={`/blog/${post.id.replace(/\.md$/, '')}/`} class="post-card">
             <span class="post-cat">{post.data.category}</span>
             <h2 class="post-title">{post.data.title}</h2>
             <p class="post-desc">{post.data.description}</p>
