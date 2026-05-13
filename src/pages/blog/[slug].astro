@@ -3,15 +3,26 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
-  return posts.map(post => ({
+  const posts = (await getCollection('blog', ({ data }) => !data.draft))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  return posts.map((post, i) => ({
     params: { slug: post.id.replace(/\.md$/, '') },
-    props: { post },
+    props: {
+      post,
+      prevPost: posts[i + 1] ?? null,
+      nextPost: posts[i - 1] ?? null,
+      relatedPosts: posts
+        .filter(p => p.id !== post.id && p.data.category === post.data.category)
+        .slice(0, 3),
+    },
   }));
 }
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost, relatedPosts } = Astro.props;
 const { Content } = await render(post);
+
+function slugOf(p: any) { return p.id.replace(/\.md$/, ''); }
 
 const pubDateStr = post.data.pubDate.toLocaleDateString('ja-JP', {
   year: 'numeric', month: 'long', day: 'numeric',
@@ -64,6 +75,40 @@ const jsonLd = {
         <span class="tag">#{tag}</span>
       ))}
     </div>
+
+    <!-- 前後記事ナビ -->
+    <nav class="post-nav">
+      {prevPost ? (
+        <a href={`/blog/${slugOf(prevPost)}/`} class="post-nav-item prev">
+          <span class="nav-label">← 前の記事</span>
+          <span class="nav-title">{prevPost.data.title}</span>
+        </a>
+      ) : <div />}
+      {nextPost ? (
+        <a href={`/blog/${slugOf(nextPost)}/`} class="post-nav-item next">
+          <span class="nav-label">次の記事 →</span>
+          <span class="nav-title">{nextPost.data.title}</span>
+        </a>
+      ) : <div />}
+    </nav>
+
+    <!-- 関連記事 -->
+    {relatedPosts.length > 0 && (
+      <section class="related-posts">
+        <h2 class="related-title">関連記事</h2>
+        <div class="related-grid">
+          {relatedPosts.map(p => (
+            <a href={`/blog/${slugOf(p)}/`} class="related-card">
+              <span class="related-cat">{p.data.category}</span>
+              <h3 class="related-card-title">{p.data.title}</h3>
+              <time class="related-date" datetime={p.data.pubDate.toISOString()}>
+                {p.data.pubDate.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
     <div class="article-nav">
       <a href="/blog/" class="btn-back">← ブログ一覧に戻る</a>
@@ -200,7 +245,61 @@ const jsonLd = {
     padding: .2rem .6rem;
     border-radius: 3px;
   }
-  .article-nav { margin-top: 2rem; }
+  /* 前後ナビ */
+  .post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .post-nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .post-nav-item:hover { border-color: var(--color-accent); box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+  .post-nav-item.next { text-align: right; }
+  .nav-label { font-size: .75rem; color: var(--color-accent); font-weight: 700; }
+  .nav-title { font-size: .88rem; color: var(--color-text); font-weight: 600; line-height: 1.4; }
+
+  /* 関連記事 */
+  .related-posts { margin-top: 2.5rem; }
+  .related-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+    margin-bottom: 1rem;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: .75rem;
+  }
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: border-color .2s;
+  }
+  .related-card:hover { border-color: var(--color-accent); }
+  .related-cat { font-size: .7rem; color: var(--color-accent); font-weight: 700; }
+  .related-card-title { font-size: .88rem; font-weight: 600; color: var(--color-text); line-height: 1.45; }
+  .related-date { font-size: .75rem; color: var(--color-text-muted); }
+
+  .article-nav { margin-top: 1.5rem; }
   .btn-back {
     font-size: .88rem;
     color: var(--color-accent);
