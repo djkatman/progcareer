@@ -32,20 +32,18 @@ export default {
     const typeLabel = TYPES[type] ?? type;
     const toAddress = env.CONTACT_TO_EMAIL ?? 'djkatman@gmail.com';
 
-    const mailRes = await fetch('https://api.mailchannels.net/tx/v1/send', {
+    const mailRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+      },
       body: JSON.stringify({
-        personalizations: [{ to: [{ email: toAddress }] }],
-        from: { email: 'noreply@progcareer.com', name: 'ProgCareer お問い合わせ' },
-        reply_to: { email, name },
+        from: 'ProgCareer お問い合わせ <onboarding@resend.dev>',
+        to: [toAddress],
+        reply_to: email,
         subject: `[ProgCareer] ${typeLabel}`,
-        content: [
-          {
-            type: 'text/plain',
-            value: `お名前: ${name}\nメール: ${email}\n種別: ${typeLabel}\n\n${message}`,
-          },
-        ],
+        text: `お名前: ${name}\nメール: ${email}\n種別: ${typeLabel}\n\n${message}`,
       }),
     });
 
