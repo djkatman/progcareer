@@ -131,16 +131,16 @@ const jsonLd = {
       </div>
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-num">100+</span>
-          <span class="stat-label">調査スクール数</span>
+          <span class="stat-num">7社</span>
+          <span class="stat-label">掲載スクール数</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">30+</span>
+          <span class="stat-num">6社</span>
           <span class="stat-label">掲載エージェント</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">5万人+</span>
-          <span class="stat-label">月間読者</span>
+          <span class="stat-num">随時</span>
+          <span class="stat-label">情報更新中</span>
         </div>
       </div>
     </div>
@@ -217,7 +217,7 @@ const jsonLd = {
     <div class="container">
       <h2 class="section-title">ProgCareerでわかること</h2>
       <div class="feature-grid">
-        <div class="feature-card">
+        <a href="/school-ranking/" class="feature-card">
           <img
             src="/images/feature-school.jpg"
             alt="プログラミングスクールを比較する様子"
@@ -229,8 +229,8 @@ const jsonLd = {
             <h3>スクールを徹底比較</h3>
             <p>料金・期間・就職サポートの実態を調査。あなたの目的・予算に合ったスクールが見つかります。</p>
           </div>
-        </div>
-        <div class="feature-card">
+        </a>
+        <a href="/agent-ranking/" class="feature-card">
           <img
             src="/images/feature-career.jpg"
             alt="転職面接のイメージ"
@@ -242,8 +242,8 @@ const jsonLd = {
             <h3>転職エージェントを比較</h3>
             <p>IT特化・未経験可の転職エージェントを比較。書類対策から内定まで伴走してくれるサービスがわかります。</p>
           </div>
-        </div>
-        <div class="feature-card">
+        </a>
+        <a href="/beginner-guide/" class="feature-card">
           <img
             src="/images/feature-guide.jpg"
             alt="学習ガイドのイメージ"
@@ -255,7 +255,7 @@ const jsonLd = {
             <h3>未経験ガイドを読む</h3>
             <p>「何から始めればいい？」を解消。学習ロードマップから転職活動の流れまでわかりやすく解説します。</p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -264,14 +264,14 @@ const jsonLd = {
   <section class="section section-alt" id="faq">
     <div class="container container-narrow">
       <h2 class="section-title">よくある質問</h2>
-      <dl class="faq-list">
+      <div class="faq-list">
         {faqs.map(f => (
-          <div class="faq-item">
-            <dt class="faq-q">{f.q}</dt>
-            <dd class="faq-a">{f.a}</dd>
-          </div>
+          <details class="faq-item">
+            <summary class="faq-q">{f.q}</summary>
+            <p class="faq-a">{f.a}</p>
+          </details>
         ))}
-      </dl>
+      </div>
     </div>
   </section>
 </Layout>
@@ -491,27 +491,42 @@ const jsonLd = {
   }
 
   /* FAQ */
-  .faq-list { display: flex; flex-direction: column; gap: 16px; }
+  .faq-list { display: flex; flex-direction: column; gap: 10px; }
   .faq-item {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
   .faq-q {
-    padding: 18px 20px;
+    padding: 16px 20px;
     font-weight: 700;
     font-size: 0.95rem;
-    background: #EFF6FF;
-    color: var(--color-primary-mid);
-    border-left: 4px solid var(--color-accent);
-  }
-  .faq-a {
-    padding: 16px 20px;
-    font-size: 0.9rem;
     color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+  .faq-item[open] .faq-q::after { content: '−'; }
+  .faq-a {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
     line-height: 1.8;
+    border-top: 1px solid var(--color-border);
+    background: #F8FAFC;
+    margin: 0;
   }
 
   /* レスポンシブ */
