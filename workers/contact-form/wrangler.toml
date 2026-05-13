@@ -1,0 +1,10 @@
+name = "progcareer-contact"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+CONTACT_TO_EMAIL = "djkatman@gmail.com"
+
+routes = [
+  { pattern = "contact.progcareer.com/send", zone_name = "progcareer.com" }
+]

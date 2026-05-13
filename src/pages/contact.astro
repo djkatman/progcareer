@@ -71,7 +71,7 @@ import Layout from '../layouts/Layout.astro';
     };
 
     try {
-      const res = await fetch('https://contact.progcareer.com/send', {
+      const res = await fetch('https://progcareer-contact.djkatman.workers.dev/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
