@@ -1,0 +1,208 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const pubDateStr = post.data.pubDate.toLocaleDateString('ja-JP', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+const updatedDateStr = post.data.updatedDate?.toLocaleDateString('ja-JP', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  author: { '@type': 'Person', name: '中澤一人' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'ProgCareer',
+    url: 'https://progcareer.com',
+  },
+};
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class="container article-wrap">
+    <div class="article-header">
+      <span class="article-cat">{post.data.category}</span>
+      <h1 class="article-title">{post.data.title}</h1>
+      <div class="article-meta">
+        <time datetime={post.data.pubDate.toISOString()}>公開：{pubDateStr}</time>
+        {updatedDateStr && (
+          <time datetime={post.data.updatedDate!.toISOString()}>更新：{updatedDateStr}</time>
+        )}
+      </div>
+    </div>
+
+    <div class="article-body">
+      <Content />
+    </div>
+
+    <div class="article-tags">
+      {post.data.tags.map(tag => (
+        <span class="tag">#{tag}</span>
+      ))}
+    </div>
+
+    <div class="article-nav">
+      <a href="/blog/" class="btn-back">← ブログ一覧に戻る</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .article-wrap {
+    padding-top: 2.5rem;
+    padding-bottom: 5rem;
+    max-width: 780px;
+  }
+  .article-header { margin-bottom: 2rem; }
+  .article-cat {
+    display: inline-block;
+    background: #EFF6FF;
+    color: var(--color-accent);
+    font-size: .75rem;
+    font-weight: 700;
+    padding: .25rem .7rem;
+    border-radius: 3px;
+    margin-bottom: .75rem;
+  }
+  .article-title {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--color-text);
+    margin-bottom: .75rem;
+  }
+  .article-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: .8rem;
+    color: var(--color-text-muted);
+  }
+
+  /* 記事本文スタイル */
+  .article-body { line-height: 1.9; }
+  .article-body :global(h2) {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-text);
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+    margin: 2.5rem 0 1rem;
+  }
+  .article-body :global(h3) {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 2rem 0 .75rem;
+    padding-left: .5rem;
+    border-left: 2px solid var(--color-highlight);
+  }
+  .article-body :global(p) {
+    font-size: .95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+  }
+  .article-body :global(ul), .article-body :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    font-size: .95rem;
+    color: var(--color-text-muted);
+    list-style: revert;
+  }
+  .article-body :global(li) { margin-bottom: .4rem; }
+  .article-body :global(strong) { color: var(--color-text); font-weight: 700; }
+  .article-body :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+  .article-body :global(blockquote) {
+    border-left: 3px solid var(--color-border);
+    padding-left: 1rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+  .article-body :global(code) {
+    background: #F1F5F9;
+    padding: .15rem .4rem;
+    border-radius: 3px;
+    font-size: .85em;
+    font-family: 'Courier New', monospace;
+  }
+  .article-body :global(pre) {
+    background: #0F172A;
+    color: #E2E8F0;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    font-size: .85rem;
+  }
+  .article-body :global(pre code) {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+  }
+  .article-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .88rem;
+    margin-bottom: 1.5rem;
+  }
+  .article-body :global(th) {
+    background: #EFF6FF;
+    padding: .6rem 1rem;
+    border: 1px solid var(--color-border);
+    font-weight: 700;
+    text-align: left;
+  }
+  .article-body :global(td) {
+    padding: .6rem 1rem;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .tag {
+    font-size: .78rem;
+    color: var(--color-text-muted);
+    background: #F1F5F9;
+    padding: .2rem .6rem;
+    border-radius: 3px;
+  }
+  .article-nav { margin-top: 2rem; }
+  .btn-back {
+    font-size: .88rem;
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+</style>

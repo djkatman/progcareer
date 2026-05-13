@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categories = ['学習Tips', 'フリーランス・副業', 'スクール比較', '転職ノウハウ'] as const;
+
+const categoryCount = categories.map(cat => ({
+  name: cat,
+  count: posts.filter(p => p.data.category === cat).length,
+}));
+---
+
+<Layout
+  title="ブログ｜プログラミング学習・IT転職・フリーランス情報"
+  description="プログラミング学習のコツ・IT転職ノウハウ・フリーランス副業情報を毎日更新。未経験からエンジニアを目指す人に役立つ記事を発信します。"
+>
+  <div class="container page-wrap">
+    <h1 class="page-title">ブログ</h1>
+    <p class="page-desc">プログラミング学習・IT転職・フリーランスに関する情報を毎日更新しています。</p>
+
+    <div class="cat-nav">
+      {categoryCount.map(c => (
+        <a href={`#${c.name}`} class="cat-chip">
+          {c.name} <span class="cat-count">{c.count}</span>
+        </a>
+      ))}
+    </div>
+
+    {posts.length === 0 ? (
+      <p class="empty">記事を準備中です。もうしばらくお待ちください。</p>
+    ) : (
+      <div class="post-grid">
+        {posts.map(post => (
+          <a href={`/blog/${post.slug}/`} class="post-card">
+            <span class="post-cat">{post.data.category}</span>
+            <h2 class="post-title">{post.data.title}</h2>
+            <p class="post-desc">{post.data.description}</p>
+            <div class="post-meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</Layout>
+
+<style>
+  .page-wrap {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+    max-width: 900px;
+  }
+  .page-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+    margin-bottom: .5rem;
+  }
+  .page-desc {
+    font-size: .95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+  }
+  .cat-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 2.5rem;
+  }
+  .cat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: #EFF6FF;
+    color: var(--color-accent);
+    border: 1px solid #BFDBFE;
+    border-radius: 999px;
+    padding: .35rem 1rem;
+    font-size: .82rem;
+    font-weight: 600;
+    transition: background .2s;
+  }
+  .cat-chip:hover { background: #DBEAFE; }
+  .cat-count {
+    background: var(--color-accent);
+    color: #fff;
+    border-radius: 999px;
+    padding: 0 .4rem;
+    font-size: .72rem;
+  }
+  .empty {
+    color: var(--color-text-muted);
+    font-size: .95rem;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .post-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    transition: box-shadow .2s, border-color .2s;
+  }
+  .post-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    border-color: var(--color-accent);
+  }
+  .post-cat {
+    display: inline-block;
+    background: #EFF6FF;
+    color: var(--color-accent);
+    font-size: .72rem;
+    font-weight: 700;
+    padding: .2rem .6rem;
+    border-radius: 3px;
+    width: fit-content;
+  }
+  .post-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+  .post-desc {
+    font-size: .85rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .post-meta {
+    font-size: .78rem;
+    color: var(--color-text-muted);
+    margin-top: .25rem;
+  }
+</style>
