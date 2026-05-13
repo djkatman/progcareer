@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://progcareer.com/sitemap-index.xml

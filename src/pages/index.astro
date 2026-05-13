@@ -1,17 +1,489 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+const schools = [
+  {
+    rank: 1,
+    name: 'テックアカデミー',
+    tagline: '業界最大手・受講生数No.1',
+    price: '月額29,800円〜',
+    period: '4週間〜',
+    features: ['現役エンジニアがメンター', '週2回のメンタリング', '転職支援あり'],
+    url: '#',
+    highlight: true,
+  },
+  {
+    rank: 2,
+    name: 'DMM WEBCAMP',
+    tagline: '転職成功率98%・返金保証あり',
+    price: '月額49,800円〜',
+    period: '3ヶ月〜',
+    features: ['転職保証コースあり', 'チーム開発経験', '独自カリキュラム'],
+    url: '#',
+    highlight: false,
+  },
+  {
+    rank: 3,
+    name: 'RUNTEQ',
+    tagline: 'Webエンジニア特化・1,000時間カリキュラム',
+    price: '月額44,000円〜',
+    period: '5〜9ヶ月',
+    features: ['実践的なポートフォリオ', 'コミュニティが充実', '自社開発企業に強い'],
+    url: '#',
+    highlight: false,
+  },
+];
+
+const agents = [
+  {
+    rank: 1,
+    name: 'レバテックキャリア',
+    tagline: 'ITエンジニア転職専門・求人数業界最大級',
+    features: ['IT特化の専門アドバイザー', '高年収求人が豊富', '面接対策が充実'],
+    url: '#',
+  },
+  {
+    rank: 2,
+    name: 'マイナビIT AGENT',
+    tagline: '未経験〜経験者まで幅広く対応',
+    features: ['未経験可求人が多い', '全国対応', '大手マイナビのネットワーク'],
+    url: '#',
+  },
+  {
+    rank: 3,
+    name: 'ウズキャリIT',
+    tagline: '第二新卒・未経験転職に特化',
+    features: ['20代未経験に強い', '内定率86%', 'ブラック企業排除基準あり'],
+    url: '#',
+  },
+];
+
+const faqs = [
+  {
+    q: 'プログラミング未経験でもエンジニアになれますか？',
+    a: 'はい、なれます。実際に多くの未経験者がプログラミングスクールを経由してIT企業へ転職しています。ただし、学習期間は最低でも3〜6ヶ月程度必要です。',
+  },
+  {
+    q: 'プログラミングスクールの費用相場はどのくらいですか？',
+    a: 'オンラインスクールで月2万〜5万円、転職保証付きコースでは総額40万〜70万円程度が相場です。教育訓練給付金（最大70%還元）が使えるスクールもあります。',
+  },
+  {
+    q: '転職エージェントは複数登録しても問題ありませんか？',
+    a: '問題ありません。むしろ2〜3社に並行登録して求人の幅を広げることが一般的です。それぞれのアドバイザーの強みを活かしましょう。',
+  },
+  {
+    q: '未経験からエンジニアになるまでの平均期間はどのくらいですか？',
+    a: 'スクール受講から転職完了まで、平均6〜9ヶ月が目安です。学習時間の確保やポートフォリオの質によって前後します。',
+  },
+  {
+    q: 'どの言語から学習を始めるのがおすすめですか？',
+    a: 'Webエンジニアを目指すならJavaScriptとHTML/CSSからスタートするのが最も一般的です。バックエンドはPythonまたはRubyが初学者に向いています。',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://progcareer.com/#website',
+      url: 'https://progcareer.com/',
+      name: 'ProgCareer（プログキャリア）',
+      description: '未経験からIT転職を目指す人向けのプログラミングスクール・転職エージェント比較メディア',
+      inLanguage: 'ja',
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://progcareer.com/#faq',
+      mainEntity: faqs.map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="未経験からIT転職を目指す人のためのスクール・エージェント比較メディア"
+  description="プログラミングスクール・IT転職エージェントを徹底比較。未経験からエンジニアへの最短ルートをProgCareerが一緒に見つけます。"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <!-- ヒーローセクション -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">未経験からエンジニアへ</p>
+        <h1 class="hero-title">未経験からエンジニアへ。<br />最短ルートを、一緒に見つけよう。</h1>
+        <p class="hero-desc">
+          スクール選び・転職エージェント選びで失敗しないために。
+          100以上のサービスを調査した編集部が、あなたに最適な道筋をご紹介します。
+        </p>
+        <div class="hero-cta-wrap">
+          <a href="/school-ranking/" class="btn btn-accent">スクールを比較する</a>
+          <a href="/agent-ranking/" class="btn btn-outline">転職エージェントを見る</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img
+          src="/images/hero.jpg"
+          alt="パソコンで作業するエンジニア"
+          width="600"
+          height="400"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- おすすめスクールランキング -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">おすすめプログラミングスクール TOP3</h2>
+      <p class="section-desc">編集部が費用・サポート・転職実績を総合評価してランキング化しました。</p>
+      <div class="ranking-list">
+        {schools.map(s => (
+          <div class={`ranking-card${s.highlight ? ' is-top' : ''}`}>
+            <div class="rank-badge">
+              <span class="rank-num">{s.rank}</span>
+              <span class="rank-label">位</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">{s.name}</h3>
+              <p class="card-tagline">{s.tagline}</p>
+              <ul class="card-features">
+                {s.features.map(f => <li>{f}</li>)}
+              </ul>
+              <div class="card-meta">
+                <span>料金: {s.price}</span>
+                <span>期間: {s.period}</span>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href={s.url} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-accent">
+                公式サイトを見る
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="affiliate-note">※ 本ランキングにはアフィリエイトリンクが含まれます。</p>
+    </div>
+  </section>
+
+  <!-- おすすめ転職エージェント TOP3 -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">おすすめIT転職エージェント TOP3</h2>
+      <p class="section-desc">未経験でも登録できる転職エージェントを厳選しました。</p>
+      <div class="ranking-list">
+        {agents.map(a => (
+          <div class="ranking-card">
+            <div class="rank-badge">
+              <span class="rank-num">{a.rank}</span>
+              <span class="rank-label">位</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">{a.name}</h3>
+              <p class="card-tagline">{a.tagline}</p>
+              <ul class="card-features">
+                {a.features.map(f => <li>{f}</li>)}
+              </ul>
+            </div>
+            <div class="card-action">
+              <a href={a.url} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-accent">
+                無料で登録する
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="affiliate-note">※ 本ランキングにはアフィリエイトリンクが含まれます。</p>
+    </div>
+  </section>
+
+  <!-- このサイトでわかること -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">ProgCareerでわかること</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <img
+            src="/images/feature-school.jpg"
+            alt="プログラミングスクールを比較する様子"
+            width="400"
+            height="260"
+            loading="lazy"
+          />
+          <div class="feature-text">
+            <h3>スクールを徹底比較</h3>
+            <p>料金・期間・就職サポートの実態を調査。あなたの目的・予算に合ったスクールが見つかります。</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img
+            src="/images/feature-career.jpg"
+            alt="転職面接のイメージ"
+            width="400"
+            height="260"
+            loading="lazy"
+          />
+          <div class="feature-text">
+            <h3>転職エージェントを比較</h3>
+            <p>IT特化・未経験可の転職エージェントを比較。書類対策から内定まで伴走してくれるサービスがわかります。</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img
+            src="/images/feature-guide.jpg"
+            alt="学習ガイドのイメージ"
+            width="400"
+            height="260"
+            loading="lazy"
+          />
+          <div class="feature-text">
+            <h3>未経験ガイドを読む</h3>
+            <p>「何から始めればいい？」を解消。学習ロードマップから転職活動の流れまでわかりやすく解説します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQセクション -->
+  <section class="section section-alt" id="faq">
+    <div class="container container-narrow">
+      <h2 class="section-title">よくある質問</h2>
+      <dl class="faq-list">
+        {faqs.map(f => (
+          <div class="faq-item">
+            <dt class="faq-q">{f.q}</dt>
+            <dd class="faq-a">{f.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ボタン */
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn-accent {
+    background: var(--color-accent);
+    color: #fff;
+  }
+  .btn-accent:hover { background: var(--color-accent-dark); }
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.7);
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+  /* ヒーロー */
+  .hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1d4ed8 100%);
+    color: #fff;
+    padding: 80px 20px;
+  }
+  .hero-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #bfdbfe;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    color: #dbeafe;
+    margin-bottom: 32px;
+    line-height: 1.8;
+  }
+  .hero-cta-wrap {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .hero-image img {
+    border-radius: 12px;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 3/2;
+  }
+
+  /* セクション */
+  .section { padding: 80px 20px; }
+  .section-alt { background: #fff; }
+  .container { max-width: var(--max-width); margin: 0 auto; }
+  .container-narrow { max-width: 780px; margin: 0 auto; }
+  .section-title {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .section-desc {
+    text-align: center;
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+  }
+
+  /* ランキングカード */
+  .ranking-list { display: flex; flex-direction: column; gap: 20px; }
+  .ranking-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    transition: box-shadow 0.2s;
+  }
+  .ranking-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .ranking-card.is-top {
+    border-color: var(--color-accent);
+    border-width: 2px;
+    background: #fffbeb;
+  }
+  .rank-badge {
+    text-align: center;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+  .is-top .rank-badge { background: var(--color-accent); }
+  .rank-num { font-size: 1.4rem; font-weight: 700; line-height: 1; }
+  .rank-label { font-size: 0.65rem; }
+  .card-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+  .card-tagline { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 10px; }
+  .card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .card-features li {
+    background: #eff6ff;
+    color: var(--color-primary);
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+  .card-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+  .affiliate-note {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: 20px;
+  }
+
+  /* 特徴グリッド */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .feature-card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+  .feature-card img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/10;
+  }
+  .feature-text {
+    padding: 20px;
+  }
+  .feature-text h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+  }
+  .feature-text p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 16px; }
+  .faq-item {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 18px 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: #eff6ff;
+    color: var(--color-primary);
+    border-left: 4px solid var(--color-primary);
+  }
+  .faq-a {
+    padding: 16px 20px;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    line-height: 1.8;
+  }
+
+  /* レスポンシブ */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-image { display: none; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .ranking-card { grid-template-columns: 56px 1fr; }
+    .card-action { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) {
+    .ranking-card { grid-template-columns: 1fr; }
+    .rank-badge { width: 44px; height: 44px; }
+  }
+</style>
