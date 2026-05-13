@@ -7,7 +7,7 @@ const schools = [
     rank: 1,
     id: 'dmm-webcamp',
     name: 'SHIFT TERAS CAMPUS（旧DMM WEBCAMP）',
-    tagline: '転職成功率98%・給付金で最大70%OFF',
+    tagline: '転職保証コースあり・給付金で最大70%OFF',
     price: '月額49,800円〜',
     period: '3ヶ月〜',
     support: '転職保証あり',
@@ -52,27 +52,27 @@ const schools = [
     rank: 4,
     id: 'techacademy',
     name: 'TechAcademy（テックアカデミー）',
-    tagline: '受講者数No.1・業界最大手のオンラインスクール',
+    tagline: 'コース数が豊富・現役エンジニアがメンター',
     price: '月額29,800円〜',
     period: '4〜16週間',
     support: '転職支援あり',
     features: ['現役エンジニアがメンター', '週2回メンタリング', 'コース数が豊富'],
-    pros: '受講者数・コース数ともに業界最大。自分のペースで学べる。',
+    pros: 'コース数が多く、自分の目的に合わせて選べる。自分のペースで学べるオンライン完結型。',
     cons: '転職保証はないコースが多い。自己管理力が必要。',
     target: '副業・スキルアップ目的の方・幅広いコースから選びたい方',
     highlight: false,
-    badge: '受講者数No.1',
+    badge: '豊富なコース数',
   },
   {
     rank: 5,
     id: 'samurai-engineer',
     name: '侍エンジニア',
-    tagline: 'マンツーマン指導・挫折率0%宣言',
+    tagline: 'マンツーマン指導・挫折しにくい環境',
     price: '月額69,667円〜',
     period: '3〜6ヶ月',
     support: '転職支援・副業支援あり',
-    features: ['完全マンツーマン', '挫折率0%保証', 'フリーランス支援'],
-    pros: 'マンツーマン指導で挫折しにくい。副業・フリーランス向け支援も充実。',
+    features: ['完全マンツーマン', '個別カリキュラム', 'フリーランス支援'],
+    pros: 'マンツーマン指導で学習が続けやすい。副業・フリーランス向け支援も充実。',
     cons: '費用が高め。',
     target: '独学で挫折した経験がある方・フリーランスも視野に入れている方',
     highlight: false,
@@ -111,7 +111,7 @@ const schools = [
 ];
 
 const faqs = [
-  { q: 'プログラミングスクールは必要ですか？独学ではダメですか？', a: '独学でも習得は可能ですが、挫折率が高く（約9割）、転職サポートがない点がデメリットです。スクールは体系的なカリキュラムと転職支援がセットになっており、最短でエンジニアになりたい方には有効な選択肢です。' },
+  { q: 'プログラミングスクールは必要ですか？独学ではダメですか？', a: '独学でも習得は可能ですが、途中で詰まって学習が止まりやすく、転職サポートがない点がデメリットです。スクールは体系的なカリキュラムと転職支援がセットになっており、最短でエンジニアになりたい方には有効な選択肢です。' },
   { q: '教育訓練給付金とは何ですか？', a: '雇用保険に一定期間加入している方が対象の国の給付制度です。対象スクールを修了すると、受講費用の最大70%が支給されます。SHIFT TERAS CAMPUSやテックキャンプなど、対応スクールが増えています。' },
   { q: '転職保証とはどういう仕組みですか？', a: '一定の条件（学習時間・卒業試験合格など）を満たして転職活動を行っても内定が出なかった場合、受講料を全額返金する制度です。保証条件はスクールにより異なるため、契約前に必ず確認してください。' },
   { q: '独学との違いは何ですか？', a: '最大の違いは「サポート体制」と「転職支援」です。スクールでは現役エンジニアによるメンタリング・コードレビュー・面接対策まで一貫してサポートを受けられます。独学は費用を抑えられますが、詰まったときに自力で解決する必要があります。' },
@@ -195,6 +195,34 @@ const jsonLd = {
             ))}
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- 評価基準 -->
+    <section class="section-block">
+      <h2 class="section-title">編集部の評価基準</h2>
+      <p class="criteria-desc">本ランキングは、以下の評価基準をもとに編集部が独自調査・採点した結果です（2026年5月時点の公式情報を確認）。アフィリエイト報酬は掲載順位に影響しません。</p>
+      <div class="criteria-grid">
+        <div class="criteria-item">
+          <span class="criteria-label">転職支援の充実度</span>
+          <span class="criteria-score">30点</span>
+          <p class="criteria-detail">転職保証・就職支援・書類対策の有無と質</p>
+        </div>
+        <div class="criteria-item">
+          <span class="criteria-label">料金・給付金対応</span>
+          <span class="criteria-score">25点</span>
+          <p class="criteria-detail">費用対効果・教育訓練給付金の対応有無</p>
+        </div>
+        <div class="criteria-item">
+          <span class="criteria-label">カリキュラムの質</span>
+          <span class="criteria-score">25点</span>
+          <p class="criteria-detail">目標職種との合致度・ポートフォリオ制作</p>
+        </div>
+        <div class="criteria-item">
+          <span class="criteria-label">学習継続のしやすさ</span>
+          <span class="criteria-score">20点</span>
+          <p class="criteria-detail">メンターの質・質問対応・コミュニティ</p>
+        </div>
       </div>
     </section>
 
@@ -330,6 +358,22 @@ const jsonLd = {
     color: var(--color-text);
   }
   .affiliate-note { font-size: .75rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+
+  /* 評価基準 */
+  .criteria-desc { font-size: .875rem; color: var(--color-text-muted); margin-bottom: 1.25rem; line-height: 1.7; }
+  .criteria-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .criteria-item {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+  }
+  .criteria-label { font-weight: 700; font-size: .9rem; color: var(--color-text); }
+  .criteria-score { font-size: 1.1rem; font-weight: 700; color: var(--color-accent); }
+  .criteria-detail { font-size: .8rem; color: var(--color-text-muted); }
 
   /* 比較表 */
   .table-wrap { overflow-x: auto; }

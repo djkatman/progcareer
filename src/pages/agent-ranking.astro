@@ -7,14 +7,14 @@ const agents = [
     rank: 1,
     id: 'levatech',
     name: 'レバテックキャリア',
-    tagline: 'ITエンジニア転職専門・求人数業界最大級',
+    tagline: 'ITエンジニア転職専門・豊富な求人数',
     target: 'エンジニア経験者・スクール卒業後の転職',
-    features: ['IT特化の専門アドバイザー', '高年収求人が豊富', '面接対策が充実', '求人数業界最大級'],
-    pros: 'IT特化の転職エージェントとして業界最大の求人数。専門アドバイザーによる手厚いサポート。',
+    features: ['IT特化の専門アドバイザー', '高年収求人が豊富', '面接対策が充実', 'IT専門エージェント'],
+    pros: 'IT特化の転職エージェントとして豊富な求人数。専門アドバイザーによる手厚いサポート。',
     cons: '未経験者よりも経験者向けの求人が多め。',
     recommended: 'スクール卒業後・実務経験1年以上の方',
     highlight: true,
-    badge: '求人数No.1',
+    badge: 'IT転職特化',
     fee: '無料',
     condition: 'WEB登録→面談',
   },
@@ -22,10 +22,10 @@ const agents = [
     rank: 2,
     id: 'uzuz-it',
     name: 'ウズキャリIT',
-    tagline: '第二新卒・未経験特化・内定率86%',
+    tagline: '第二新卒・未経験特化のIT転職エージェント',
     target: '20代未経験・第二新卒',
-    features: ['未経験可求人が多い', '内定率86%', 'ブラック企業排除基準あり', '平均10時間のサポート'],
-    pros: '第二新卒・未経験者に特化。ブラック企業を徹底排除した求人のみ紹介。',
+    features: ['未経験可求人が多い', '20代・第二新卒に強い', '求人の質を重視して厳選', '手厚いサポート体制'],
+    pros: '第二新卒・未経験者に特化。求人の質を重視した厳選紹介が特徴。',
     cons: '30代以上には対応範囲が狭い場合がある。',
     recommended: '20代未経験・第二新卒でIT転職を目指す方',
     highlight: false,
@@ -67,14 +67,14 @@ const agents = [
     rank: 5,
     id: 'doda',
     name: 'doda',
-    tagline: '業界最大級の総合転職エージェント',
+    tagline: '総合型転職エージェント・IT求人も豊富',
     target: '幅広い職種・業界への転職',
     features: ['求人数業界トップクラス', 'IT求人も豊富', 'スカウト機能あり', '転職フェア開催'],
     pros: '総合型で求人の幅が広い。IT以外の選択肢も含めて比較したい方に最適。',
     cons: 'IT特化ではないため、専門的なアドバイスは他社に劣る場合がある。',
     recommended: 'IT以外の選択肢も含めて転職先を検討したい方',
     highlight: false,
-    badge: '求人数最大級',
+    badge: '総合転職',
     fee: '無料',
     condition: '会員登録完了',
   },
@@ -186,6 +186,34 @@ const jsonLd = {
             ))}
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- 評価基準 -->
+    <section class="section-block">
+      <h2 class="section-title">編集部の評価基準</h2>
+      <p class="criteria-desc">本ランキングは、以下の評価基準をもとに編集部が独自調査・採点した結果です（2026年5月時点の公式情報を確認）。アフィリエイト報酬は掲載順位に影響しません。</p>
+      <div class="criteria-grid">
+        <div class="criteria-item">
+          <span class="criteria-label">未経験者への対応力</span>
+          <span class="criteria-score">30点</span>
+          <p class="criteria-detail">未経験可求人数・登録ハードルの低さ</p>
+        </div>
+        <div class="criteria-item">
+          <span class="criteria-label">サポートの質</span>
+          <span class="criteria-score">30点</span>
+          <p class="criteria-detail">書類添削・面接対策・アドバイザーの専門性</p>
+        </div>
+        <div class="criteria-item">
+          <span class="criteria-label">求人の質・量</span>
+          <span class="criteria-score">25点</span>
+          <p class="criteria-detail">IT関連求人数・非公開求人の充実度</p>
+        </div>
+        <div class="criteria-item">
+          <span class="criteria-label">利便性</span>
+          <span class="criteria-score">15点</span>
+          <p class="criteria-detail">全国対応・オンライン面談・スピード感</p>
+        </div>
       </div>
     </section>
 
@@ -314,6 +342,22 @@ const jsonLd = {
   }
   .section-desc { font-size: .95rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
   .affiliate-note { font-size: .75rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+
+  /* 評価基準 */
+  .criteria-desc { font-size: .875rem; color: var(--color-text-muted); margin-bottom: 1.25rem; line-height: 1.7; }
+  .criteria-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .criteria-item {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+  }
+  .criteria-label { font-weight: 700; font-size: .9rem; color: var(--color-text); }
+  .criteria-score { font-size: 1.1rem; font-weight: 700; color: var(--color-accent); }
+  .criteria-detail { font-size: .8rem; color: var(--color-text-muted); }
 
   .table-wrap { overflow-x: auto; }
   .compare-table { width: 100%; border-collapse: collapse; font-size: .875rem; min-width: 640px; }

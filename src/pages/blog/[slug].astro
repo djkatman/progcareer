@@ -51,6 +51,7 @@ const jsonLd = {
   title={post.data.title}
   description={post.data.description}
   ogImage={post.data.ogImage ?? '/images/og-default.svg'}
+  ogType="article"
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 

@@ -4,6 +4,7 @@ export interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  ogType?: string;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   description = '未経験からエンジニアへ。プログラミングスクール比較・IT転職エージェント比較を一気通貫でサポートするメディア「ProgCareer（プログキャリア）」',
   canonical = Astro.url.href,
   ogImage = '/images/og-default.svg',
+  ogType = 'website',
 } = Astro.props;
 
 const siteName = 'ProgCareer（プログキャリア）';
@@ -29,7 +31,7 @@ const fullTitle = `${title} | ${siteName}`;
   <link rel="canonical" href={canonical} />
 
   <!-- OGP -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />

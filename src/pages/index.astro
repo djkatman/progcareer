@@ -12,7 +12,7 @@ const schools = [
     rank: 1,
     id: 'dmm-webcamp',
     name: 'SHIFT TERAS CAMPUS',
-    tagline: '転職成功率98%・給付金で最大70%OFF',
+    tagline: '転職保証コースあり・給付金で最大70%OFF',
     price: '月額49,800円〜',
     period: '3ヶ月〜',
     features: ['転職保証コースあり', '給付金制度対応', '専属メンター'],
@@ -22,7 +22,7 @@ const schools = [
     rank: 2,
     id: 'techacademy',
     name: 'TechAcademy',
-    tagline: '業界最大手・受講生数No.1',
+    tagline: '豊富なコース数・オンライン完結',
     price: '月額29,800円〜',
     period: '4週間〜',
     features: ['現役エンジニアがメンター', '週2回のメンタリング', '転職支援あり'],
@@ -45,7 +45,7 @@ const agents = [
     rank: 1,
     id: 'levatech',
     name: 'レバテックキャリア',
-    tagline: 'ITエンジニア転職専門・求人数業界最大級',
+    tagline: 'ITエンジニア転職専門・豊富な求人数',
     features: ['IT特化の専門アドバイザー', '高年収求人が豊富', '面接対策が充実'],
   },
   {
@@ -53,7 +53,7 @@ const agents = [
     id: 'uzuz-it',
     name: 'ウズキャリIT',
     tagline: '第二新卒・未経験転職に特化',
-    features: ['20代未経験に強い', '内定率86%', 'ブラック企業排除基準あり'],
+    features: ['20代未経験に強い', '未経験可求人に特化', '求人の質を重視して厳選'],
   },
   {
     rank: 3,
@@ -270,7 +270,7 @@ const jsonLd = {
   <section class="section">
     <div class="container">
       <h2 class="section-title">最新ブログ記事</h2>
-      <p class="section-desc">プログラミング学習・IT転職・フリーランスに役立つ情報を毎日更新しています。</p>
+      <p class="section-desc">プログラミング学習・IT転職・フリーランスに役立つ情報を随時更新しています。</p>
       <div class="blog-grid">
         {recentPosts.map(post => (
           <a href={`/blog/${post.id.replace(/\.md$/, '')}/`} class="blog-card">
