@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#0F172A"/>
+  <!-- グリッド -->
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E293B" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <!-- 上昇ライン -->
+  <polyline points="80,360 200,300 320,260 440,180 560,120 680,70" fill="none" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+  <!-- ステップ円 -->
+  <circle cx="200" cy="300" r="10" fill="#3B82F6"/>
+  <circle cx="320" cy="260" r="10" fill="#3B82F6"/>
+  <circle cx="440" cy="180" r="10" fill="#3B82F6"/>
+  <circle cx="560" cy="120" r="10" fill="#F59E0B"/>
+  <circle cx="680" cy="70" r="14" fill="#F59E0B"/>
+  <!-- テキスト -->
+  <text x="40" y="80" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#FFFFFF">未経験から</text>
+  <text x="40" y="128" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#3B82F6">エンジニア転職</text>
+  <text x="40" y="176" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#FFFFFF">完全ロードマップ</text>
+  <text x="40" y="230" font-family="Arial, sans-serif" font-size="16" fill="#94A3B8">スクール選び〜内定獲得まで全ステップを解説</text>
+  <!-- バッジ -->
+  <rect x="40" y="380" width="140" height="36" rx="4" fill="#1E3A5F"/>
+  <text x="110" y="404" font-family="Arial, sans-serif" font-size="13" fill="#60A5FA" text-anchor="middle">転職ノウハウ</text>
+  <rect x="196" y="380" width="180" height="36" rx="4" fill="#1E3A5F"/>
+  <text x="286" y="404" font-family="Arial, sans-serif" font-size="13" fill="#60A5FA" text-anchor="middle">progcareer.com</text>
+</svg>
