@@ -1,0 +1,230 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqs = [
+  {
+    category: 'スクール・学習について',
+    items: [
+      {
+        q: 'プログラミング未経験でもスクールについていけますか？',
+        a: 'ほとんどのスクールは未経験者向けに設計されており、ゼロから学べるカリキュラムになっています。わからない箇所はメンターに質問できる環境があるので、挫折リスクは独学より大幅に低くなります。',
+      },
+      {
+        q: 'スクールの費用相場はどのくらいですか？',
+        a: '一般的な転職保証付きスクールは30〜70万円が相場です。ただし、教育訓練給付金（最大70%給付）の対象スクールを選ぶことで実質負担を大幅に減らせます。また、プログラマカレッジのように完全無料で通えるスクールもあります。',
+      },
+      {
+        q: '働きながら学習できますか？期間はどのくらいかかりますか？',
+        a: 'できます。週20〜30時間の学習時間を確保できれば、オンラインスクールで3〜6ヶ月が目安です。通学型でも夜間・週末コースを設けているスクールがあります。',
+      },
+      {
+        q: '独学とスクールどちらが良いですか？',
+        a: '過去に独学で挫折したことがある方、学習仲間やメンターのサポートが欲しい方、転職活動のサポートも必要な方にはスクールをおすすめします。自己管理が得意で費用を抑えたい方は独学も有効です。',
+      },
+      {
+        q: '教育訓練給付金とは何ですか？',
+        a: '雇用保険に加入していた方が対象の国の制度で、厚生労働省指定の講座受講料の最大70%が給付されます。対象スクール・コースかどうかは、各スクールの公式サイトまたはハローワークで確認できます。',
+      },
+    ],
+  },
+  {
+    category: 'IT転職・求人について',
+    items: [
+      {
+        q: '未経験でもエンジニアに転職できますか？',
+        a: 'できます。特に20代は「ポテンシャル採用」として未経験可の求人が多く存在します。スクールでポートフォリオを作成し、IT転職専門エージェントを活用することで内定率が大幅に上がります。',
+      },
+      {
+        q: '未経験エンジニアの平均年収はどのくらいですか？',
+        a: '入社直後は300〜400万円が多いですが、3〜5年でスキルを積めば500〜700万円、フリーランスに転向すると800〜1,000万円以上も現実的です。',
+      },
+      {
+        q: '何歳まで未経験転職できますか？',
+        a: '実績ベースでは20代が圧倒的多数ですが、30代前半でも転職成功例は多くあります。30代では前職の専門知識（医療・金融・製造など）とエンジニアスキルを掛け合わせる戦略が有効です。',
+      },
+      {
+        q: '文系出身でもエンジニアになれますか？',
+        a: 'なれます。現在活躍しているエンジニアの相当数は文系出身です。プログラミングは論理的思考力が重要ですが、文系の人が得意な「言語化・コミュニケーション力」もエンジニアとして非常に重宝されます。',
+      },
+      {
+        q: 'どんな職種から目指せばいいですか？',
+        a: '未経験からのハードルが低い順に「Webエンジニア（フロントエンド）」「社内SE」「インフラエンジニア」が挙げられます。将来的に高収入を狙うならバックエンドエンジニアやクラウドエンジニアがおすすめです。',
+      },
+    ],
+  },
+  {
+    category: '転職エージェントについて',
+    items: [
+      {
+        q: '転職エージェントは無料で使えますか？',
+        a: 'はい、求職者は完全無料です。エージェントへの報酬は採用した企業側が支払う仕組みです。',
+      },
+      {
+        q: '転職エージェントは何社登録すればいいですか？',
+        a: '2〜3社の同時登録がおすすめです。各エージェントで保有する求人が異なるため、複数登録することで選択肢が広がります。ただし、管理が大変になるため4社以上は避けましょう。',
+      },
+      {
+        q: '未経験向けと経験者向けのエージェントは違いますか？',
+        a: '違います。ウズキャリITやマイナビIT AGENTは未経験者向けのサポートが充実しており、ポートフォリオ添削・面接対策まで丁寧にサポートしてくれます。レバテックキャリアは即戦力エンジニア向けの求人が中心です。',
+      },
+    ],
+  },
+  {
+    category: 'このサイトについて',
+    items: [
+      {
+        q: 'このサイトの情報は最新ですか？',
+        a: '掲載情報は定期的に更新していますが、スクールの料金・カリキュラム・キャンペーンは変更される場合があります。最新情報は必ず各サービスの公式サイトにてご確認ください。',
+      },
+      {
+        q: 'アフィリエイトリンクが含まれていますか？',
+        a: 'はい、当サイトはアフィリエイトプログラムに参加しており、リンク経由で申込みが成立した場合に報酬を受け取ることがあります（PR表記あり）。ただし、掲載順位・評価はアフィリエイト報酬の有無によって変わりません。',
+      },
+      {
+        q: 'お問い合わせはどこからできますか？',
+        a: '「お問い合わせ」ページのフォームよりご連絡ください。記事内容の誤り・掲載情報の更新依頼なども受け付けています。',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="よくある質問（FAQ）"
+  description="プログラミングスクール・IT転職に関するよくある質問をまとめました。スクール選び・費用・転職エージェントの使い方などを解説します。"
+>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.flatMap(cat => cat.items.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": { "@type": "Answer", "text": item.a },
+    }))),
+  })} />
+
+  <div class="container page-wrap">
+    <h1 class="page-title">よくある質問</h1>
+    <p class="page-desc">プログラミングスクール・IT転職に関してよく寄せられる質問をまとめました。</p>
+
+    {faqs.map(cat => (
+      <section class="faq-section">
+        <h2 class="cat-title">{cat.category}</h2>
+        <div class="faq-list">
+          {cat.items.map(item => (
+            <details class="faq-item">
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <div class="cta-section">
+      <p>スクール・エージェントをまとめて比較</p>
+      <div class="cta-btns">
+        <a href="/school-ranking/" class="btn btn-primary">スクール比較を見る</a>
+        <a href="/agent-ranking/" class="btn btn-outline">エージェント比較を見る</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-wrap {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+    max-width: 800px;
+  }
+  .page-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+    margin-bottom: .5rem;
+  }
+  .page-desc {
+    font-size: .95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    padding-left: 1rem;
+  }
+
+  .faq-section { margin-bottom: 2.5rem; }
+  .cat-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+    margin-bottom: 1rem;
+    letter-spacing: .03em;
+  }
+
+  .faq-list { display: flex; flex-direction: column; gap: .6rem; }
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-surface);
+  }
+  .faq-item summary {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    font-size: .93rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-text);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p {
+    padding: 1rem 1.25rem;
+    font-size: .9rem;
+    color: var(--color-text-muted);
+    background: #F8FAFC;
+    margin: 0;
+    border-top: 1px solid var(--color-border);
+    line-height: 1.85;
+  }
+
+  .cta-section {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .cta-section p {
+    font-weight: 700;
+    font-size: .95rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: .75rem 1.75rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: .9rem;
+    transition: opacity .2s;
+  }
+  .btn:hover { opacity: .85; }
+  .btn-primary { background: var(--color-accent); color: #fff; }
+  .btn-outline { border: 2px solid var(--color-accent); color: var(--color-accent); }
+</style>
