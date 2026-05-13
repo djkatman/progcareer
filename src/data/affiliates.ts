@@ -1,12 +1,17 @@
 // アフィリエイトリンク一元管理
-// もしもアフィリエイト提携承認後、url を実際のトラッキングURLに差し替える
+// 提携承認後: status を 'active' に変更し、url をトラッキングURLに差し替える
+//
+// 新しいカテゴリを追加する場合:
+//   1. 下部に `export const [カテゴリ名]: AffiliateItem[] = [...]` を追加
+//   2. 記事・ページで import して getUrl() で取得するだけ
 
 export type AffiliateItem = {
   id: string;
   name: string;
-  asp: string;       // 提携ASP
+  asp: string;       // 提携ASP（もしもアフィリエイト / A8.net 等）
   status: 'pending' | 'active'; // pending=未提携 / active=提携済み
   url: string;       // アフィリエイトURL（未提携時は公式サイトURL）
+  note?: string;     // 報酬単価・条件など任意メモ
 };
 
 export const schools: AffiliateItem[] = [
@@ -106,7 +111,36 @@ export const agents: AffiliateItem[] = [
   },
 ];
 
-// IDでリンクを取得するヘルパー
+// ────────────────────────────────────────────
+// その他カテゴリ（提携が取れたら追加していく）
+// ────────────────────────────────────────────
+
+// 例: クラウドソーシング
+// export const crowdwork: AffiliateItem[] = [
+//   { id: 'crowdworks', name: 'クラウドワークス', asp: 'もしもアフィリエイト', status: 'pending', url: 'https://crowdworks.jp/' },
+//   { id: 'lancers',    name: 'ランサーズ',       asp: 'もしもアフィリエイト', status: 'pending', url: 'https://www.lancers.jp/' },
+// ];
+
+// 例: オンライン学習サービス
+// export const elearning: AffiliateItem[] = [
+//   { id: 'udemy', name: 'Udemy', asp: 'もしもアフィリエイト', status: 'pending', url: 'https://www.udemy.com/' },
+// ];
+
+// ────────────────────────────────────────────
+// ヘルパー関数
+// ────────────────────────────────────────────
+
+// IDでURLを取得（未登録・未提携は '#' を返す）
 export function getUrl(list: AffiliateItem[], id: string): string {
   return list.find(item => item.id === id)?.url ?? '#';
+}
+
+// カテゴリ全体から名前でURLを取得（記事内CTAで使いやすい）
+export function getUrlByName(list: AffiliateItem[], name: string): string {
+  return list.find(item => item.name === name)?.url ?? '#';
+}
+
+// 提携済み一覧を取得
+export function getActive(list: AffiliateItem[]): AffiliateItem[] {
+  return list.filter(item => item.status === 'active');
 }
