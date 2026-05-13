@@ -81,6 +81,12 @@ const faqs = [
   },
 ];
 
+const rankColors: Record<number, string> = {
+  1: '#F59E0B',
+  2: '#94A3B8',
+  3: '#D97706',
+};
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -113,27 +119,29 @@ const jsonLd = {
 
   <!-- ヒーローセクション -->
   <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-inner">
-      <div class="hero-text">
-        <p class="hero-eyebrow">未経験からエンジニアへ</p>
-        <h1 class="hero-title">未経験からエンジニアへ。<br />最短ルートを、一緒に見つけよう。</h1>
-        <p class="hero-desc">
-          スクール選び・転職エージェント選びで失敗しないために。
-          100以上のサービスを調査した編集部が、あなたに最適な道筋をご紹介します。
-        </p>
-        <div class="hero-cta-wrap">
-          <a href="/school-ranking/" class="btn btn-accent">スクールを比較する</a>
-          <a href="/agent-ranking/" class="btn btn-outline">転職エージェントを見る</a>
-        </div>
+      <h1 class="hero-title">未経験からエンジニアへ。<br />最短ルートを、一緒に見つけよう。</h1>
+      <p class="hero-desc">
+        スクール選び・転職活動で失敗しないために。100以上のサービスを調査した編集部が最適解をご紹介。
+      </p>
+      <div class="hero-cta-wrap">
+        <a href="/school-ranking/" class="btn btn-primary">スクールを比較する</a>
+        <a href="/agent-ranking/" class="btn btn-outline">転職エージェントを見る</a>
       </div>
-      <div class="hero-image">
-        <img
-          src="/images/hero.jpg"
-          alt="パソコンで作業するエンジニア"
-          width="600"
-          height="400"
-          loading="eager"
-        />
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">100+</span>
+          <span class="stat-label">調査スクール数</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">30+</span>
+          <span class="stat-label">掲載エージェント</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">5万人+</span>
+          <span class="stat-label">月間読者</span>
+        </div>
       </div>
     </div>
   </section>
@@ -146,7 +154,7 @@ const jsonLd = {
       <div class="ranking-list">
         {schools.map(s => (
           <div class={`ranking-card${s.highlight ? ' is-top' : ''}`}>
-            <div class="rank-badge">
+            <div class="rank-badge" style={`background: ${rankColors[s.rank] ?? '#64748B'}`}>
               <span class="rank-num">{s.rank}</span>
               <span class="rank-label">位</span>
             </div>
@@ -162,7 +170,7 @@ const jsonLd = {
               </div>
             </div>
             <div class="card-action">
-              <a href={s.url} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-accent">
+              <a href={s.url} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-primary">
                 公式サイトを見る
               </a>
             </div>
@@ -180,8 +188,8 @@ const jsonLd = {
       <p class="section-desc">未経験でも登録できる転職エージェントを厳選しました。</p>
       <div class="ranking-list">
         {agents.map(a => (
-          <div class="ranking-card">
-            <div class="rank-badge">
+          <div class={`ranking-card${a.rank === 1 ? ' is-top' : ''}`}>
+            <div class="rank-badge" style={`background: ${rankColors[a.rank] ?? '#64748B'}`}>
               <span class="rank-num">{a.rank}</span>
               <span class="rank-label">位</span>
             </div>
@@ -193,7 +201,7 @@ const jsonLd = {
               </ul>
             </div>
             <div class="card-action">
-              <a href={a.url} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-accent">
+              <a href={a.url} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-primary">
                 無料で登録する
               </a>
             </div>
@@ -279,86 +287,111 @@ const jsonLd = {
     transition: all 0.2s;
     cursor: pointer;
     text-align: center;
+    min-height: 44px;
+    min-width: 44px;
   }
-  .btn-accent {
+  .btn-primary {
     background: var(--color-accent);
     color: #fff;
   }
-  .btn-accent:hover { background: var(--color-accent-dark); }
+  .btn-primary:hover { background: var(--color-accent-vivid); }
   .btn-outline {
     background: transparent;
     color: #fff;
-    border: 2px solid rgba(255,255,255,0.7);
+    border: 2px solid rgba(255,255,255,0.6);
   }
-  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
   /* ヒーロー */
   .hero {
-    background: linear-gradient(135deg, var(--color-primary) 0%, #1d4ed8 100%);
+    position: relative;
+    background-image: url('/images/hero.jpg');
+    background-size: cover;
+    background-position: center;
     color: #fff;
-    padding: 80px 20px;
+    padding: 120px 20px;
+    overflow: hidden;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.72);
+    z-index: 0;
   }
   .hero-inner {
+    position: relative;
+    z-index: 1;
     max-width: var(--max-width);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-  .hero-eyebrow {
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    color: #bfdbfe;
-    margin-bottom: 12px;
   }
   .hero-title {
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-size: clamp(1.8rem, 4vw, 3rem);
     font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 20px;
+    line-height: 1.35;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
   }
   .hero-desc {
-    font-size: 0.95rem;
-    color: #dbeafe;
-    margin-bottom: 32px;
+    font-size: 1rem;
+    color: #CBD5E1;
+    margin-bottom: 40px;
     line-height: 1.8;
+    max-width: 600px;
   }
   .hero-cta-wrap {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    margin-bottom: 64px;
   }
-  .hero-image img {
-    border-radius: 12px;
-    width: 100%;
-    object-fit: cover;
-    aspect-ratio: 3/2;
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 32px;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: #94A3B8;
+    letter-spacing: 0.05em;
   }
 
   /* セクション */
-  .section { padding: 80px 20px; }
-  .section-alt { background: #fff; }
+  .section { padding: 100px 20px; }
+  .section-alt { background: var(--color-surface); }
   .container { max-width: var(--max-width); margin: 0 auto; }
   .container-narrow { max-width: 780px; margin: 0 auto; }
   .section-title {
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
     font-weight: 700;
     color: var(--color-text);
     margin-bottom: 8px;
-    text-align: center;
+    padding-left: 14px;
+    border-left: 3px solid var(--color-accent);
   }
   .section-desc {
-    text-align: center;
     color: var(--color-text-muted);
     margin-bottom: 40px;
+    padding-left: 14px;
+    font-size: 0.9rem;
   }
 
   /* ランキングカード */
-  .ranking-list { display: flex; flex-direction: column; gap: 20px; }
+  .ranking-list { display: flex; flex-direction: column; gap: 16px; }
   .ranking-card {
-    background: #fff;
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: 24px;
@@ -366,17 +399,15 @@ const jsonLd = {
     grid-template-columns: 64px 1fr auto;
     gap: 20px;
     align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     transition: box-shadow 0.2s;
   }
-  .ranking-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .ranking-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
   .ranking-card.is-top {
-    border-color: var(--color-accent);
-    border-width: 2px;
-    background: #fffbeb;
+    border-left: 3px solid var(--color-highlight);
   }
   .rank-badge {
     text-align: center;
-    background: var(--color-primary);
     color: #fff;
     border-radius: 50%;
     width: 56px;
@@ -387,7 +418,6 @@ const jsonLd = {
     flex-direction: column;
     flex-shrink: 0;
   }
-  .is-top .rank-badge { background: var(--color-accent); }
   .rank-num { font-size: 1.4rem; font-weight: 700; line-height: 1; }
   .rank-label { font-size: 0.65rem; }
   .card-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
@@ -399,10 +429,10 @@ const jsonLd = {
     margin-bottom: 10px;
   }
   .card-features li {
-    background: #eff6ff;
-    color: var(--color-primary);
-    border-radius: 4px;
-    padding: 2px 10px;
+    background: #EFF6FF;
+    color: var(--color-primary-mid);
+    border-radius: 999px;
+    padding: 3px 12px;
     font-size: 0.78rem;
     font-weight: 500;
   }
@@ -412,11 +442,17 @@ const jsonLd = {
     font-size: 0.82rem;
     color: var(--color-text-muted);
   }
+  .card-action {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
   .affiliate-note {
-    text-align: center;
     font-size: 0.75rem;
     color: var(--color-text-muted);
     margin-top: 20px;
+    padding-left: 14px;
   }
 
   /* 特徴グリッド */
@@ -426,11 +462,14 @@ const jsonLd = {
     gap: 28px;
   }
   .feature-card {
-    background: #fff;
+    background: var(--color-surface);
     border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--color-border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s;
   }
+  .feature-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
   .feature-card img {
     width: 100%;
     object-fit: cover;
@@ -443,7 +482,7 @@ const jsonLd = {
     font-size: 1rem;
     font-weight: 700;
     margin-bottom: 8px;
-    color: var(--color-primary);
+    color: var(--color-primary-mid);
   }
   .feature-text p {
     font-size: 0.875rem;
@@ -454,18 +493,19 @@ const jsonLd = {
   /* FAQ */
   .faq-list { display: flex; flex-direction: column; gap: 16px; }
   .faq-item {
-    background: #fff;
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
   .faq-q {
     padding: 18px 20px;
     font-weight: 700;
     font-size: 0.95rem;
-    background: #eff6ff;
-    color: var(--color-primary);
-    border-left: 4px solid var(--color-primary);
+    background: #EFF6FF;
+    color: var(--color-primary-mid);
+    border-left: 4px solid var(--color-accent);
   }
   .faq-a {
     padding: 16px 20px;
@@ -476,13 +516,14 @@ const jsonLd = {
 
   /* レスポンシブ */
   @media (max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-image { display: none; }
     .feature-grid { grid-template-columns: 1fr; }
     .ranking-card { grid-template-columns: 56px 1fr; }
-    .card-action { grid-column: 1 / -1; }
+    .card-action { grid-column: 1 / -1; align-items: stretch; }
+    .card-action .btn { width: 100%; }
   }
   @media (max-width: 600px) {
+    .hero { padding: 80px 20px; }
+    .hero-stats { gap: 24px; display: grid; grid-template-columns: 1fr 1fr; }
     .ranking-card { grid-template-columns: 1fr; }
     .rank-badge { width: 44px; height: 44px; }
   }

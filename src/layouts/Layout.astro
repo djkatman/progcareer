@@ -56,7 +56,10 @@ const fullTitle = `${title} | ${siteName}`;
   <!-- ヘッダー -->
   <header class="site-header">
     <div class="header-inner">
-      <a href="/" class="logo">ProgCareer</a>
+      <a href="/" class="logo">
+        <span class="logo-main">ProgCareer</span>
+        <span class="logo-sub">未経験IT転職ナビ</span>
+      </a>
 
       <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
         <span></span>
@@ -84,14 +87,33 @@ const fullTitle = `${title} | ${siteName}`;
   <!-- フッター -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <p class="footer-logo">ProgCareer（プログキャリア）</p>
-      <nav class="footer-nav">
-        <ul>
-          <li><a href="/privacy-policy/">プライバシーポリシー</a></li>
-          <li><a href="/disclaimer/">免責事項</a></li>
-          <li><a href="/about/">運営者情報</a></li>
-        </ul>
-      </nav>
+      <div class="footer-col footer-brand">
+        <p class="footer-logo">ProgCareer</p>
+        <p class="footer-brand-desc">未経験からITエンジニアへの転職を目指す人のための比較・情報メディア。スクール選び・エージェント選びをトータルサポートします。</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">コンテンツ</p>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="/school-ranking/">スクールランキング</a></li>
+            <li><a href="/agent-ranking/">エージェントランキング</a></li>
+            <li><a href="/beginner-guide/">未経験ガイド</a></li>
+            <li><a href="/faq/">よくある質問</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">サイト情報</p>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="/about/">運営者情報</a></li>
+            <li><a href="/privacy-policy/">プライバシーポリシー</a></li>
+            <li><a href="/disclaimer/">免責事項</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
       <p class="copyright">&copy; 2026 ProgCareer. All Rights Reserved.</p>
     </div>
   </footer>
@@ -112,14 +134,16 @@ const fullTitle = `${title} | ${siteName}`;
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --color-primary: #1E40AF;
-    --color-primary-dark: #1e3a8a;
-    --color-accent: #F59E0B;
-    --color-accent-dark: #d97706;
+    --color-primary: #0F172A;
+    --color-primary-mid: #1E40AF;
+    --color-accent: #3B82F6;
+    --color-accent-vivid: #60A5FA;
+    --color-highlight: #F59E0B;
     --color-bg: #F8FAFC;
-    --color-text: #1e293b;
-    --color-text-muted: #64748b;
-    --color-border: #e2e8f0;
+    --color-surface: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-text: #0F172A;
+    --color-text-muted: #64748B;
     --font-base: 'Noto Sans JP', sans-serif;
     --max-width: 1100px;
     --radius: 8px;
@@ -148,8 +172,8 @@ const fullTitle = `${title} | ${siteName}`;
 
   /* ヘッダー */
   .site-header {
-    background: #fff;
-    border-bottom: 2px solid var(--color-primary);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -164,22 +188,36 @@ const fullTitle = `${title} | ${siteName}`;
     justify-content: space-between;
   }
   .logo {
-    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .logo-main {
+    font-size: 1.3rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-accent);
     letter-spacing: 0.03em;
+  }
+  .logo-sub {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
   }
   .site-nav ul {
     display: flex;
     gap: 28px;
   }
   .site-nav a {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    color: var(--color-text);
+    color: var(--color-text-muted);
     transition: color 0.2s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
-  .site-nav a:hover { color: var(--color-primary); }
+  .site-nav a:hover { color: var(--color-accent); }
 
   /* ハンバーガー */
   .hamburger {
@@ -190,6 +228,10 @@ const fullTitle = `${title} | ${siteName}`;
     border: none;
     cursor: pointer;
     padding: 8px;
+    min-height: 44px;
+    min-width: 44px;
+    align-items: center;
+    justify-content: center;
   }
   .hamburger span {
     display: block;
@@ -201,38 +243,61 @@ const fullTitle = `${title} | ${siteName}`;
 
   /* フッター */
   .site-footer {
-    background: var(--color-primary-dark);
-    color: #cbd5e1;
-    padding: 48px 20px 24px;
+    background: var(--color-primary);
+    color: #94A3B8;
+    padding: 60px 20px 0;
     margin-top: 80px;
   }
   .footer-inner {
     max-width: var(--max-width);
     margin: 0 auto;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #1E293B;
   }
   .footer-logo {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #fff;
+    margin-bottom: 12px;
+  }
+  .footer-brand-desc {
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: #64748B;
+  }
+  .footer-col-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     margin-bottom: 16px;
   }
   .footer-nav ul {
     display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
+    flex-direction: column;
+    gap: 10px;
   }
   .footer-nav a {
     font-size: 0.85rem;
-    color: #94a3b8;
+    color: #64748B;
     transition: color 0.2s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
   .footer-nav a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 20px 0;
+  }
   .copyright {
-    font-size: 0.8rem;
-    color: #64748b;
+    font-size: 0.78rem;
+    color: #334155;
   }
 
   /* レスポンシブ */
@@ -244,11 +309,12 @@ const fullTitle = `${title} | ${siteName}`;
       top: 64px;
       left: 0;
       right: 0;
-      background: #fff;
-      border-bottom: 2px solid var(--color-primary);
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
       padding: 16px 20px;
     }
     .site-nav.is-open { display: block; }
-    .site-nav ul { flex-direction: column; gap: 16px; }
+    .site-nav ul { flex-direction: column; gap: 4px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
   }
 </style>
