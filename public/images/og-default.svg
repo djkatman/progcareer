@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- 背景 -->
+  <rect width="1200" height="630" fill="#0F172A"/>
+
+  <!-- アクセントライン -->
+  <rect x="0" y="0" width="6" height="630" fill="#3B82F6"/>
+  <rect x="0" y="580" width="1200" height="4" fill="#3B82F6" opacity="0.3"/>
+
+  <!-- グリッドパターン（薄い） -->
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1E293B" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- サイト名 -->
+  <text x="80" y="200" font-family="'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="900" fill="#3B82F6" letter-spacing="-2">ProgCareer</text>
+
+  <!-- サブタイトル -->
+  <text x="84" y="258" font-family="'Helvetica Neue', Arial, sans-serif" font-size="24" fill="#94A3B8" letter-spacing="2">プログキャリア</text>
+
+  <!-- 区切り線 -->
+  <rect x="80" y="290" width="80" height="3" fill="#F59E0B"/>
+
+  <!-- キャッチコピー -->
+  <text x="80" y="370" font-family="'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#F8FAFC">未経験からIT転職を目指す人のための</text>
+  <text x="80" y="420" font-family="'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#F8FAFC">スクール・エージェント比較メディア</text>
+
+  <!-- タグ -->
+  <rect x="80" y="460" width="200" height="40" rx="4" fill="#1E3A5F"/>
+  <text x="180" y="486" font-family="'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#60A5FA" text-anchor="middle">スクール比較</text>
+
+  <rect x="296" y="460" width="220" height="40" rx="4" fill="#1E3A5F"/>
+  <text x="406" y="486" font-family="'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#60A5FA" text-anchor="middle">転職エージェント比較</text>
+
+  <rect x="532" y="460" width="180" height="40" rx="4" fill="#1E3A5F"/>
+  <text x="622" y="486" font-family="'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#60A5FA" text-anchor="middle">未経験ガイド</text>
+
+  <!-- URL -->
+  <text x="80" y="560" font-family="'Helvetica Neue', Arial, sans-serif" font-size="20" fill="#475569">progcareer.com</text>
+</svg>
