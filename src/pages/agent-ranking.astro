@@ -1,0 +1,457 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const agents = [
+  {
+    rank: 1,
+    name: 'レバテックキャリア',
+    tagline: 'ITエンジニア転職専門・求人数業界最大級',
+    target: 'エンジニア経験者・スクール卒業後の転職',
+    features: ['IT特化の専門アドバイザー', '高年収求人が豊富', '面接対策が充実', '求人数業界最大級'],
+    pros: 'IT特化の転職エージェントとして業界最大の求人数。専門アドバイザーによる手厚いサポート。',
+    cons: '未経験者よりも経験者向けの求人が多め。',
+    recommended: 'スクール卒業後・実務経験1年以上の方',
+    url: '#',
+    highlight: true,
+    badge: '求人数No.1',
+    fee: '無料',
+    condition: 'WEB登録→面談',
+  },
+  {
+    rank: 2,
+    name: 'ウズキャリIT',
+    tagline: '第二新卒・未経験特化・内定率86%',
+    target: '20代未経験・第二新卒',
+    features: ['未経験可求人が多い', '内定率86%', 'ブラック企業排除基準あり', '平均10時間のサポート'],
+    pros: '第二新卒・未経験者に特化。ブラック企業を徹底排除した求人のみ紹介。',
+    cons: '30代以上には対応範囲が狭い場合がある。',
+    recommended: '20代未経験・第二新卒でIT転職を目指す方',
+    url: '#',
+    highlight: false,
+    badge: '未経験特化',
+    fee: '無料',
+    condition: 'WEB登録完了',
+  },
+  {
+    rank: 3,
+    name: 'マイナビIT AGENT',
+    tagline: '大手マイナビ運営・幅広い求人と手厚いサポート',
+    target: '未経験〜経験者まで幅広く',
+    features: ['未経験可求人が豊富', '全国対応', '書類・面接対策が充実', '非公開求人多数'],
+    pros: '大手マイナビのネットワークを活かした豊富な求人。全国どこでも対応。',
+    cons: '担当者の質にばらつきがある場合がある。',
+    recommended: '地方在住・未経験からIT転職を目指す方',
+    url: '#',
+    highlight: false,
+    badge: '全国対応',
+    fee: '無料',
+    condition: '会員登録→面談',
+  },
+  {
+    rank: 4,
+    name: 'Geekly（ギークリー）',
+    tagline: 'IT・Web・ゲーム業界特化の転職エージェント',
+    target: 'IT・Web・ゲーム業界への転職希望者',
+    features: ['IT・Web・ゲーム特化', '最短2週間で内定', '業界知識が豊富なアドバイザー'],
+    pros: 'IT・Web・ゲーム業界に特化した専門エージェント。スピード感ある転職が可能。',
+    cons: '他業界からの転職や汎用的なIT求人は少なめ。',
+    recommended: 'Web系・ゲーム業界に転職したい方',
+    url: '#',
+    highlight: false,
+    badge: 'スピード転職',
+    fee: '無料',
+    condition: '登録→面談',
+  },
+  {
+    rank: 5,
+    name: 'doda',
+    tagline: '業界最大級の総合転職エージェント',
+    target: '幅広い職種・業界への転職',
+    features: ['求人数業界トップクラス', 'IT求人も豊富', 'スカウト機能あり', '転職フェア開催'],
+    pros: '総合型で求人の幅が広い。IT以外の選択肢も含めて比較したい方に最適。',
+    cons: 'IT特化ではないため、専門的なアドバイスは他社に劣る場合がある。',
+    recommended: 'IT以外の選択肢も含めて転職先を検討したい方',
+    url: '#',
+    highlight: false,
+    badge: '求人数最大級',
+    fee: '無料',
+    condition: '会員登録完了',
+  },
+  {
+    rank: 6,
+    name: '転職ドラフト',
+    tagline: '年収提示型・エンジニア向け競争入札転職',
+    target: 'ある程度のスキルを持つエンジニア',
+    features: ['年収を先に提示', '企業からスカウトされる', 'エンジニア特化'],
+    pros: '企業が年収を提示してからオファーが来る仕組み。条件面での交渉が有利。',
+    cons: 'ある程度のスキルや実績が必要。完全未経験は登録が難しい場合も。',
+    recommended: 'スクール卒業後・実務経験1〜2年でキャリアアップを目指す方',
+    url: '#',
+    highlight: false,
+    badge: '年収重視',
+    fee: '無料',
+    condition: '登録完了',
+  },
+];
+
+const combinations = [
+  { label: '未経験から最短転職', agents: ['ウズキャリIT', 'マイナビIT AGENT'], reason: '未経験可求人が多く、サポートが手厚い2社。幅広い選択肢から比較できます。' },
+  { label: 'スクール卒業後のキャリアアップ', agents: ['レバテックキャリア', 'Geekly（ギークリー）'], reason: 'IT特化の2社に登録することで、より専門的な求人を網羅できます。' },
+  { label: '年収重視の転職', agents: ['レバテックキャリア', '転職ドラフト'], reason: '高年収求人に強い2社の組み合わせ。条件交渉を有利に進められます。' },
+];
+
+const faqs = [
+  { q: '転職エージェントは無料で使えますか？', a: 'はい、求職者（転職希望者）は完全無料で利用できます。エージェントの報酬は採用した企業側が支払う仕組みです。' },
+  { q: '複数の転職エージェントに登録してもいいですか？', a: '問題ありません。むしろ2〜3社に並行登録することが一般的です。各社で求人の重複が少なく、アドバイザーの相性も比較できるためおすすめです。' },
+  { q: '未経験でも転職エージェントに登録できますか？', a: 'はい、未経験可のエージェントも多数あります。特にウズキャリIT・マイナビIT AGENTは未経験者の登録を積極的に受け入れています。プログラミングスクール在学中でも登録可能です。' },
+  { q: 'どのタイミングで登録すれば良いですか？', a: 'スクール受講中の早い段階での登録をおすすめします。転職活動の流れや求人市場の情報収集が早めにできます。スクール卒業の2〜3ヶ月前から本格的に活動を開始するのが一般的です。' },
+  { q: 'スクール在学中でも転職エージェントを使えますか？', a: 'はい、使えます。在学中に登録して情報収集を始め、卒業後に本格的な選考活動に進む流れが効率的です。エージェントによっては学習状況に合わせた求人紹介も行ってくれます。' },
+];
+
+const badgeColors: Record<number, string> = { 1: '#F59E0B', 2: '#94A3B8', 3: '#D97706' };
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ItemList',
+      name: 'IT転職エージェントおすすめランキング2026',
+      itemListElement: agents.map((a, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: a.name,
+        description: a.tagline,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<Layout
+  title="IT転職エージェントおすすめランキング【2026年最新】未経験・第二新卒向け"
+  description="未経験・第二新卒からITエンジニアへの転職を目指す方向けに転職エージェントを徹底比較。求人数・サポート内容・口コミを総合評価したランキングを公開。"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class="container page-wrap">
+
+    <!-- リード文 -->
+    <div class="lead-section">
+      <p class="pr-label">本記事はアフィリエイト広告を含みます</p>
+      <h1 class="page-title">IT転職エージェント<br class="sp-only" />おすすめランキング【2026年最新】</h1>
+      <p class="page-sub">未経験・第二新卒からITエンジニアへの転職を目指す方向けに、編集部が求人数・サポート内容・口コミを総合評価してランキング化しました。</p>
+      <p class="updated">最終更新日：2026年5月13日</p>
+      <ul class="lead-points">
+        <li>主要6エージェントの特徴・対象・サポート内容を徹底比較</li>
+        <li>未経験・第二新卒でも使えるエージェントを厳選紹介</li>
+        <li>目的別おすすめ組み合わせも解説</li>
+      </ul>
+    </div>
+
+    <!-- 比較表 -->
+    <section class="section-block">
+      <h2 class="section-title">IT転職エージェント比較表</h2>
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>エージェント名</th>
+              <th>対象</th>
+              <th>費用</th>
+              <th>成果条件</th>
+              <th>特徴</th>
+            </tr>
+          </thead>
+          <tbody>
+            {agents.map(a => (
+              <tr class={a.highlight ? 'row-top' : ''}>
+                <td class="td-name">
+                  <span class="td-rank" style={`background:${badgeColors[a.rank] ?? '#3B82F6'}`}>{a.rank}位</span>
+                  {a.name}
+                </td>
+                <td>{a.target}</td>
+                <td>{a.fee}</td>
+                <td>{a.condition}</td>
+                <td>{a.features[0]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ランキング -->
+    <section class="section-block">
+      <h2 class="section-title">おすすめエージェント詳細ランキング</h2>
+      <p class="affiliate-note">※本ランキングにはアフィリエイトリンクが含まれます。編集部の独自基準により評価しています。</p>
+      <div class="ranking-list">
+        {agents.map(a => (
+          <div class={`ranking-card${a.highlight ? ' is-top' : ''}`}>
+            <div class="card-header">
+              <div class="rank-badge" style={`background:${badgeColors[a.rank] ?? '#3B82F6'}`}>
+                <span class="rank-num">{a.rank}</span>
+                <span class="rank-unit">位</span>
+              </div>
+              <div class="card-title-wrap">
+                <span class="card-badge">{a.badge}</span>
+                <h3 class="card-name">{a.name}</h3>
+                <p class="card-tagline">{a.tagline}</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-tags">
+                {a.features.map(f => <span class="tag">{f}</span>)}
+              </div>
+              <div class="card-meta-grid">
+                <div class="meta-item"><span class="meta-label">対象</span><span class="meta-val">{a.target}</span></div>
+                <div class="meta-item"><span class="meta-label">利用料金</span><span class="meta-val">{a.fee}</span></div>
+                <div class="meta-item"><span class="meta-label">登録の流れ</span><span class="meta-val">{a.condition}</span></div>
+              </div>
+              <div class="card-detail">
+                <p class="detail-row"><strong>おすすめポイント：</strong>{a.pros}</p>
+                <p class="detail-row"><strong>注意点：</strong>{a.cons}</p>
+                <p class="detail-row target"><strong>こんな人に向いている：</strong>{a.recommended}</p>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href={a.url} rel="sponsored noopener noreferrer" target="_blank" class="btn-cta">
+                無料で登録する
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 複数登録のすすめ -->
+    <section class="section-block">
+      <h2 class="section-title">転職エージェントは2〜3社の併用がおすすめ</h2>
+      <p class="section-desc">各エージェントで求人の重複が少なく、アドバイザーの相性も比較できます。目的別のおすすめ組み合わせをご紹介します。</p>
+      <div class="combo-list">
+        {combinations.map(c => (
+          <div class="combo-card">
+            <h3 class="combo-label">{c.label}</h3>
+            <div class="combo-agents">
+              {c.agents.map(name => <span class="combo-agent">{name}</span>)}
+            </div>
+            <p class="combo-reason">{c.reason}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-block">
+      <h2 class="section-title">よくある質問</h2>
+      <div class="faq-list">
+        {faqs.map(f => (
+          <details class="faq-item">
+            <summary class="faq-q">{f.q}</summary>
+            <div class="faq-a">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+  .page-wrap { padding: 3rem 1.25rem 5rem; max-width: var(--max-width); margin: 0 auto; }
+
+  .lead-section { margin-bottom: 3rem; }
+  .pr-label {
+    display: inline-block;
+    background: #fef9c3;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    font-size: .75rem;
+    padding: .2rem .75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .page-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.4;
+    margin-bottom: .75rem;
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+  }
+  .page-sub { font-size: .95rem; color: var(--color-text-muted); margin-bottom: .5rem; }
+  .updated { font-size: .8rem; color: var(--color-text-muted); margin-bottom: 1.25rem; }
+  .lead-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background: #EFF6FF;
+    border-left: 3px solid var(--color-accent);
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .lead-points li { font-size: .9rem; color: var(--color-text); }
+  .lead-points li::before { content: '✓ '; color: var(--color-accent); font-weight: 700; }
+
+  .section-block { margin-bottom: 4rem; }
+  .section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+  }
+  .section-desc { font-size: .95rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .affiliate-note { font-size: .75rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+
+  .table-wrap { overflow-x: auto; }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: .875rem; min-width: 640px; }
+  .compare-table th {
+    background: #1E40AF;
+    color: #fff;
+    padding: .75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .compare-table td { border: 1px solid var(--color-border); padding: .7rem 1rem; vertical-align: top; }
+  .compare-table tr:nth-child(even) td { background: #F8FAFC; }
+  .compare-table .row-top td { background: #fffbeb; }
+  .td-name { font-weight: 600; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .td-rank {
+    display: inline-block;
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .15rem .5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .ranking-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .ranking-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    transition: box-shadow .2s;
+  }
+  .ranking-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+  .ranking-card.is-top { border-left: 3px solid #F59E0B; }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.25rem .75rem;
+    border-bottom: 1px solid var(--color-border);
+    background: #FAFAFA;
+  }
+  .rank-badge {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  .rank-num { font-size: 1.3rem; font-weight: 700; line-height: 1; }
+  .rank-unit { font-size: .6rem; }
+  .card-title-wrap { flex: 1; }
+  .card-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .15rem .6rem;
+    border-radius: 999px;
+    margin-bottom: .35rem;
+  }
+  .card-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .2rem; }
+  .card-tagline { font-size: .85rem; color: var(--color-text-muted); }
+
+  .card-body { padding: 1.25rem; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+  .tag {
+    background: #EFF6FF; color: #1E40AF;
+    font-size: .75rem; font-weight: 500;
+    padding: .2rem .7rem; border-radius: 999px;
+  }
+  .card-meta-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: .5rem; margin-bottom: 1rem;
+    background: #F8FAFC; border-radius: var(--radius); padding: .75rem;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: .2rem; }
+  .meta-label { font-size: .7rem; color: var(--color-text-muted); }
+  .meta-val { font-size: .875rem; font-weight: 600; color: var(--color-text); }
+  .card-detail { display: flex; flex-direction: column; gap: .5rem; }
+  .detail-row { font-size: .875rem; color: var(--color-text-muted); line-height: 1.7; }
+  .detail-row.target { color: var(--color-accent); font-weight: 500; }
+
+  .card-action { padding: 1rem 1.25rem; border-top: 1px solid var(--color-border); background: #FAFAFA; }
+  .btn-cta {
+    display: block; width: 100%;
+    background: var(--color-accent); color: #fff;
+    text-align: center; padding: .85rem;
+    border-radius: var(--radius);
+    font-weight: 700; font-size: .95rem;
+    transition: background .2s;
+  }
+  .btn-cta:hover { background: var(--color-accent-vivid); }
+
+  /* 組み合わせ */
+  .combo-list { display: flex; flex-direction: column; gap: 1rem; }
+  .combo-card {
+    background: #fff; border: 1px solid var(--color-border);
+    border-radius: var(--radius); padding: 1.25rem;
+  }
+  .combo-label {
+    font-size: 1rem; font-weight: 700;
+    color: var(--color-accent);
+    border-left: 3px solid var(--color-accent);
+    padding-left: .5rem; margin-bottom: .75rem;
+  }
+  .combo-agents { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .75rem; }
+  .combo-agent {
+    background: #EFF6FF; color: #1E40AF;
+    font-size: .875rem; font-weight: 600;
+    padding: .3rem .9rem; border-radius: 999px;
+  }
+  .combo-reason { font-size: .875rem; color: var(--color-text-muted); line-height: 1.7; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: .75rem; }
+  .faq-item { border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; }
+  .faq-q {
+    padding: 1rem 1.25rem; font-weight: 600; font-size: .95rem;
+    background: #EFF6FF; border-left: 4px solid var(--color-accent);
+    color: var(--color-text); cursor: pointer; list-style: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-a { padding: 1rem 1.25rem; font-size: .9rem; color: var(--color-text-muted); line-height: 1.8; }
+
+  .sp-only { display: none; }
+
+  @media (max-width: 768px) {
+    .card-meta-grid { grid-template-columns: 1fr 1fr; }
+    .sp-only { display: inline; }
+  }
+  @media (max-width: 600px) {
+    .card-header { flex-direction: column; }
+    .card-meta-grid { grid-template-columns: 1fr; }
+  }
+</style>

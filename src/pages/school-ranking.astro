@@ -1,0 +1,505 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const schools = [
+  {
+    rank: 1,
+    name: 'DMM WEBCAMP エンジニア転職',
+    tagline: '転職成功率98%・給付金で最大70%OFF',
+    price: '月額49,800円〜',
+    period: '3ヶ月〜',
+    support: '転職保証あり',
+    features: ['転職保証コース', '給付金制度対応', '専属メンター'],
+    pros: '転職保証と給付金制度が業界トップクラス。未経験からの転職実績が豊富。',
+    cons: '費用が比較的高め。',
+    target: '転職を確実に決めたい方・給付金を使いたい方',
+    url: '#',
+    highlight: true,
+    badge: '転職保証No.1',
+  },
+  {
+    rank: 2,
+    name: 'テックキャンプ エンジニア転職',
+    tagline: '短期集中・最短10週間でエンジニアへ',
+    price: '月額87,500円〜',
+    period: '10〜16週間',
+    support: '転職サポートあり',
+    features: ['短期集中カリキュラム', 'オンライン完結', '給付金対応'],
+    pros: '最短10週間で転職を実現。オンライン完結で地方からでも受講可能。',
+    cons: '短期間のため学習密度が高く、ついていくための覚悟が必要。',
+    target: '早期転職を目指す方・会社員が短期で学ぶ場合',
+    url: '#',
+    highlight: false,
+    badge: '最短転職',
+  },
+  {
+    rank: 3,
+    name: 'RUNTEQ',
+    tagline: 'Webエンジニア特化・1,000時間の実践カリキュラム',
+    price: '月額44,000円〜（総額437,800円）',
+    period: '5〜9ヶ月',
+    support: '転職支援あり',
+    features: ['自社開発企業に強い', 'ポートフォリオ制作', 'コミュニティ充実'],
+    pros: '実務レベルのカリキュラムで自社開発企業への就職に強い。',
+    cons: '学習期間が長く、費用も高め。独学力が必要。',
+    target: '自社開発企業を目指す方・スキルを徹底的に身につけたい方',
+    url: '#',
+    highlight: false,
+    badge: '実力養成',
+  },
+  {
+    rank: 4,
+    name: 'TechAcademy（テックアカデミー）',
+    tagline: '受講者数No.1・業界最大手のオンラインスクール',
+    price: '月額29,800円〜',
+    period: '4〜16週間',
+    support: '転職支援あり',
+    features: ['現役エンジニアがメンター', '週2回メンタリング', 'コース数が豊富'],
+    pros: '受講者数・コース数ともに業界最大。自分のペースで学べる。',
+    cons: '転職保証はないコースが多い。自己管理力が必要。',
+    target: '副業・スキルアップ目的の方・幅広いコースから選びたい方',
+    url: '#',
+    highlight: false,
+    badge: '受講者数No.1',
+  },
+  {
+    rank: 5,
+    name: '侍エンジニア',
+    tagline: 'マンツーマン指導・挫折率0%宣言',
+    price: '月額69,667円〜',
+    period: '3〜6ヶ月',
+    support: '転職支援・副業支援あり',
+    features: ['完全マンツーマン', '挫折率0%保証', 'フリーランス支援'],
+    pros: 'マンツーマン指導で挫折しにくい。副業・フリーランス向け支援も充実。',
+    cons: '費用が高め。',
+    target: '独学で挫折した経験がある方・フリーランスも視野に入れている方',
+    url: '#',
+    highlight: false,
+    badge: 'マンツーマン',
+  },
+  {
+    rank: 6,
+    name: 'プログラマカレッジ',
+    tagline: '完全無料・就職支援特化のスクール',
+    price: '無料（就職支援型）',
+    period: '3ヶ月',
+    support: '就職支援に特化',
+    features: ['受講料完全無料', '20代限定', 'IT企業への就職支援'],
+    pros: '受講料が完全無料。20代未経験者の就職支援に特化している。',
+    cons: '20代限定。受講場所が東京近郊に限られる場合がある。',
+    target: '費用をかけずにITエンジニアになりたい20代',
+    url: '#',
+    highlight: false,
+    badge: '完全無料',
+  },
+  {
+    rank: 7,
+    name: 'ZeroPlus',
+    tagline: 'Web制作特化・フリーランス独立支援',
+    price: '月額22,000円〜',
+    period: '6ヶ月',
+    support: 'フリーランス支援あり',
+    features: ['Web制作特化', 'フリーランス案件紹介', '半永久サポート'],
+    pros: 'Web制作・フリーランス独立に特化。半永久的なサポートが受けられる。',
+    cons: 'Webアプリ開発よりもWeb制作寄りのカリキュラム。',
+    target: 'Webデザイン・制作でフリーランス独立を目指す方',
+    url: '#',
+    highlight: false,
+    badge: 'フリーランス特化',
+  },
+];
+
+const faqs = [
+  { q: 'プログラミングスクールは必要ですか？独学ではダメですか？', a: '独学でも習得は可能ですが、挫折率が高く（約9割）、転職サポートがない点がデメリットです。スクールは体系的なカリキュラムと転職支援がセットになっており、最短でエンジニアになりたい方には有効な選択肢です。' },
+  { q: '教育訓練給付金とは何ですか？', a: '雇用保険に一定期間加入している方が対象の国の給付制度です。対象スクールを修了すると、受講費用の最大70%が支給されます。DMM WEBCAMPやテックキャンプなど、対応スクールが増えています。' },
+  { q: '転職保証とはどういう仕組みですか？', a: '一定の条件（学習時間・卒業試験合格など）を満たして転職活動を行っても内定が出なかった場合、受講料を全額返金する制度です。保証条件はスクールにより異なるため、契約前に必ず確認してください。' },
+  { q: '独学との違いは何ですか？', a: '最大の違いは「サポート体制」と「転職支援」です。スクールでは現役エンジニアによるメンタリング・コードレビュー・面接対策まで一貫してサポートを受けられます。独学は費用を抑えられますが、詰まったときに自力で解決する必要があります。' },
+  { q: 'スクールに通うと何ヶ月で転職できますか？', a: 'スクール受講期間（3〜9ヶ月）＋転職活動期間（1〜3ヶ月）で、平均6〜12ヶ月が目安です。学習時間の確保量やポートフォリオの質によって大きく前後します。' },
+];
+
+const badgeColors: Record<number, string> = { 1: '#F59E0B', 2: '#94A3B8', 3: '#D97706' };
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ItemList',
+      name: 'プログラミングスクールおすすめランキング2026',
+      itemListElement: schools.map((s, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: s.name,
+        description: s.tagline,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<Layout
+  title="プログラミングスクールおすすめランキング【2026年最新】未経験からエンジニアへ"
+  description="未経験からエンジニアを目指す方向けにプログラミングスクールを徹底比較。費用・カリキュラム・転職支援・口コミを総合評価したランキングを公開。"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class="container page-wrap">
+
+    <!-- リード文 -->
+    <div class="lead-section">
+      <p class="pr-label">本記事はアフィリエイト広告を含みます</p>
+      <h1 class="page-title">プログラミングスクール<br class="sp-only" />おすすめランキング【2026年最新】</h1>
+      <p class="page-sub">未経験からITエンジニアへの転職を目指す方向けに、編集部が費用・カリキュラム・転職支援実績を総合評価してランキング化しました。</p>
+      <p class="updated">最終更新日：2026年5月13日</p>
+      <ul class="lead-points">
+        <li>主要7スクールの費用・期間・転職支援を徹底比較</li>
+        <li>目的別（転職・副業・フリーランス）のおすすめを紹介</li>
+        <li>給付金・転職保証の仕組みをわかりやすく解説</li>
+      </ul>
+    </div>
+
+    <!-- 比較表 -->
+    <section class="section-block">
+      <h2 class="section-title">プログラミングスクール比較表</h2>
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>スクール名</th>
+              <th>料金（目安）</th>
+              <th>期間</th>
+              <th>転職支援</th>
+              <th>特徴</th>
+            </tr>
+          </thead>
+          <tbody>
+            {schools.map(s => (
+              <tr class={s.highlight ? 'row-top' : ''}>
+                <td class="td-name">
+                  <span class="td-rank" style={`background:${badgeColors[s.rank] ?? '#3B82F6'}`}>{s.rank}位</span>
+                  {s.name}
+                </td>
+                <td>{s.price}</td>
+                <td>{s.period}</td>
+                <td>{s.support}</td>
+                <td>{s.features[0]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ランキング -->
+    <section class="section-block">
+      <h2 class="section-title">おすすめスクール詳細ランキング</h2>
+      <p class="affiliate-note">※本ランキングにはアフィリエイトリンクが含まれます。編集部の独自基準により評価しています。</p>
+      <div class="ranking-list">
+        {schools.map(s => (
+          <div class={`ranking-card${s.highlight ? ' is-top' : ''}`}>
+            <div class="card-header">
+              <div class="rank-badge" style={`background:${badgeColors[s.rank] ?? '#3B82F6'}`}>
+                <span class="rank-num">{s.rank}</span>
+                <span class="rank-unit">位</span>
+              </div>
+              <div class="card-title-wrap">
+                <span class="card-badge">{s.badge}</span>
+                <h3 class="card-name">{s.name}</h3>
+                <p class="card-tagline">{s.tagline}</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-tags">
+                {s.features.map(f => <span class="tag">{f}</span>)}
+              </div>
+              <div class="card-meta-grid">
+                <div class="meta-item"><span class="meta-label">料金</span><span class="meta-val">{s.price}</span></div>
+                <div class="meta-item"><span class="meta-label">期間</span><span class="meta-val">{s.period}</span></div>
+                <div class="meta-item"><span class="meta-label">転職支援</span><span class="meta-val">{s.support}</span></div>
+              </div>
+              <div class="card-detail">
+                <p class="detail-row"><strong>おすすめポイント：</strong>{s.pros}</p>
+                <p class="detail-row"><strong>注意点：</strong>{s.cons}</p>
+                <p class="detail-row target"><strong>こんな人に向いている：</strong>{s.target}</p>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href={s.url} rel="sponsored noopener noreferrer" target="_blank" class="btn-cta">
+                無料カウンセリングを受ける
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 目的別おすすめ -->
+    <section class="section-block purpose-section">
+      <h2 class="section-title">目的別おすすめスクール</h2>
+      <div class="purpose-grid">
+        <div class="purpose-card">
+          <h3>転職を確実に決めたい方</h3>
+          <p>転職保証・給付金制度が充実した<strong>DMM WEBCAMP</strong>または<strong>テックキャンプ</strong>がおすすめ。費用の実質負担を抑えながら転職できます。</p>
+        </div>
+        <div class="purpose-card">
+          <h3>しっかりスキルを身につけたい方</h3>
+          <p>1,000時間の実践カリキュラムを誇る<strong>RUNTEQ</strong>がおすすめ。自社開発企業への就職実績が豊富です。</p>
+        </div>
+        <div class="purpose-card">
+          <h3>フリーランス独立を目指す方</h3>
+          <p>Web制作特化の<strong>ZeroPlus</strong>または副業支援が充実した<strong>侍エンジニア</strong>がおすすめ。案件獲得までサポートしてもらえます。</p>
+        </div>
+        <div class="purpose-card">
+          <h3>費用を抑えたい20代の方</h3>
+          <p>受講料完全無料の<strong>プログラマカレッジ</strong>がおすすめ。20代限定ですが就職支援まで無料で受けられます。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-block">
+      <h2 class="section-title">よくある質問</h2>
+      <div class="faq-list">
+        {faqs.map(f => (
+          <details class="faq-item">
+            <summary class="faq-q">{f.q}</summary>
+            <div class="faq-a">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+  .page-wrap { padding: 3rem 1.25rem 5rem; max-width: var(--max-width); margin: 0 auto; }
+
+  /* リード */
+  .lead-section { margin-bottom: 3rem; }
+  .pr-label {
+    display: inline-block;
+    background: #fef9c3;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    font-size: .75rem;
+    padding: .2rem .75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .page-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.4;
+    margin-bottom: .75rem;
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+  }
+  .page-sub { font-size: .95rem; color: var(--color-text-muted); margin-bottom: .5rem; }
+  .updated { font-size: .8rem; color: var(--color-text-muted); margin-bottom: 1.25rem; }
+  .lead-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background: #EFF6FF;
+    border-left: 3px solid var(--color-accent);
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .lead-points li { font-size: .9rem; color: var(--color-text); }
+  .lead-points li::before { content: '✓ '; color: var(--color-accent); font-weight: 700; }
+
+  /* セクション共通 */
+  .section-block { margin-bottom: 4rem; }
+  .section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+  }
+  .affiliate-note { font-size: .75rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+
+  /* 比較表 */
+  .table-wrap { overflow-x: auto; }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: .875rem; min-width: 640px; }
+  .compare-table th {
+    background: #1E40AF;
+    color: #fff;
+    padding: .75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .compare-table td {
+    border: 1px solid var(--color-border);
+    padding: .7rem 1rem;
+    vertical-align: top;
+  }
+  .compare-table tr:nth-child(even) td { background: #F8FAFC; }
+  .compare-table .row-top td { background: #fffbeb; }
+  .td-name { font-weight: 600; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .td-rank {
+    display: inline-block;
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .15rem .5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* ランキングカード */
+  .ranking-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .ranking-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    transition: box-shadow .2s;
+  }
+  .ranking-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+  .ranking-card.is-top { border-left: 3px solid #F59E0B; }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.25rem .75rem;
+    border-bottom: 1px solid var(--color-border);
+    background: #FAFAFA;
+  }
+  .rank-badge {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  .rank-num { font-size: 1.3rem; font-weight: 700; line-height: 1; }
+  .rank-unit { font-size: .6rem; }
+  .card-title-wrap { flex: 1; }
+  .card-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .15rem .6rem;
+    border-radius: 999px;
+    margin-bottom: .35rem;
+  }
+  .card-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .2rem; }
+  .card-tagline { font-size: .85rem; color: var(--color-text-muted); }
+
+  .card-body { padding: 1.25rem; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+  .tag {
+    background: #EFF6FF;
+    color: #1E40AF;
+    font-size: .75rem;
+    font-weight: 500;
+    padding: .2rem .7rem;
+    border-radius: 999px;
+  }
+  .card-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+    margin-bottom: 1rem;
+    background: #F8FAFC;
+    border-radius: var(--radius);
+    padding: .75rem;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: .2rem; }
+  .meta-label { font-size: .7rem; color: var(--color-text-muted); }
+  .meta-val { font-size: .875rem; font-weight: 600; color: var(--color-text); }
+  .card-detail { display: flex; flex-direction: column; gap: .5rem; }
+  .detail-row { font-size: .875rem; color: var(--color-text-muted); line-height: 1.7; }
+  .detail-row.target { color: var(--color-accent); font-weight: 500; }
+
+  .card-action { padding: 1rem 1.25rem; border-top: 1px solid var(--color-border); background: #FAFAFA; }
+  .btn-cta {
+    display: block;
+    width: 100%;
+    background: var(--color-accent);
+    color: #fff;
+    text-align: center;
+    padding: .85rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: .95rem;
+    transition: background .2s;
+  }
+  .btn-cta:hover { background: var(--color-accent-vivid); }
+
+  /* 目的別 */
+  .purpose-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .purpose-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .purpose-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    border-left: 3px solid var(--color-accent);
+    padding-left: .5rem;
+    margin-bottom: .75rem;
+  }
+  .purpose-card p { font-size: .875rem; color: var(--color-text-muted); line-height: 1.7; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: .75rem; }
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    font-size: .95rem;
+    background: #EFF6FF;
+    border-left: 4px solid var(--color-accent);
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-a {
+    padding: 1rem 1.25rem;
+    font-size: .9rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    background: #fff;
+  }
+
+  .sp-only { display: none; }
+
+  @media (max-width: 768px) {
+    .purpose-grid { grid-template-columns: 1fr; }
+    .card-meta-grid { grid-template-columns: 1fr 1fr; }
+    .sp-only { display: inline; }
+  }
+  @media (max-width: 600px) {
+    .card-header { flex-direction: column; }
+    .card-meta-grid { grid-template-columns: 1fr; }
+  }
+</style>
