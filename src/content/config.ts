@@ -9,6 +9,7 @@ const blog = defineCollection({
     updatedDate: z.date().optional(),
     category: z.enum(['学習Tips', 'フリーランス・副業', 'スクール比較', '転職ノウハウ']),
     tags: z.array(z.string()).default([]),
+    ogImage: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
