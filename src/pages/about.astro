@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="運営者情報"
+  description="ProgCareer（プログキャリア）の運営者情報です。"
+>
+  <div class="container page-wrap">
+    <h1 class="page-title">運営者情報</h1>
+    <p class="page-updated">最終更新日：2026年5月13日</p>
+
+    <section class="section-block">
+      <h2>サイト運営者</h2>
+      <table class="info-table">
+        <tbody>
+          <tr><th>サイト名</th><td>ProgCareer（プログキャリア）</td></tr>
+          <tr><th>運営者名</th><td>中澤一人</td></tr>
+          <tr><th>所在地</th><td>沖縄県那覇市具志2-28-35</td></tr>
+          <tr><th>お問い合わせ</th><td><a href="/contact/">お問い合わせフォーム</a>よりご連絡ください</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section-block">
+      <h2>特定商取引法に基づく表示</h2>
+      <p>当サイトはアフィリエイトメディアであり、物品・役務の直接販売は行っておりません。</p>
+      <p>プログラミングスクールへの入会・転職エージェントへの登録については、各サービスの利用規約および特定商取引法に基づく表示に従ってください。</p>
+    </section>
+
+    <section class="section-block">
+      <h2>アフィリエイトに関する表示</h2>
+      <p>当サイトはアフィリエイトプログラムに参加しており、記事内のリンクを経由してサービスへの申込みが完了した場合、当サイトが報酬を受け取ることがあります。</p>
+      <p>報酬の有無によって掲載内容の公正性・中立性は損なわれません。各サービスの評価は編集部の独自基準に基づいています。</p>
+    </section>
+
+    <section class="section-block">
+      <h2>サイトについて</h2>
+      <p>ProgCareerは「未経験からIT転職を目指す人が、スクール選びと転職活動で失敗しない」ことを目的として運営しているアフィリエイトメディアです。</p>
+      <p>掲載情報は公開時点の情報に基づいており、最新情報は各サービスの公式サイトにてご確認ください。</p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-wrap {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+    max-width: 800px;
+  }
+  .page-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: .5rem;
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+  }
+  .page-updated {
+    font-size: .85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    padding-left: 1rem;
+  }
+  .section-block { margin-bottom: 2.25rem; }
+  .section-block h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+    border-left: 3px solid var(--color-accent);
+    padding-left: .75rem;
+    margin-bottom: .85rem;
+  }
+  .section-block p {
+    font-size: .95rem;
+    color: var(--color-text-muted);
+    line-height: 1.85;
+    margin-bottom: .65rem;
+    padding-left: 1rem;
+  }
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .95rem;
+    margin-left: 1rem;
+  }
+  .info-table th, .info-table td {
+    border: 1px solid var(--color-border);
+    padding: .75rem 1rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .info-table th {
+    background: #EFF6FF;
+    font-weight: 600;
+    width: 160px;
+    color: var(--color-text);
+  }
+  .info-table a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+</style>
