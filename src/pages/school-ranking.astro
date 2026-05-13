@@ -1,9 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { schools as affiliateSchools, getUrl } from '../data/affiliates';
 
 const schools = [
   {
     rank: 1,
+    id: 'dmm-webcamp',
     name: 'SHIFT TERAS CAMPUS（旧DMM WEBCAMP）',
     tagline: '転職成功率98%・給付金で最大70%OFF',
     price: '月額49,800円〜',
@@ -13,12 +15,12 @@ const schools = [
     pros: '転職保証と給付金制度が業界トップクラス。未経験からの転職実績が豊富。',
     cons: '費用が比較的高め。',
     target: '転職を確実に決めたい方・給付金を使いたい方',
-    url: '#',
     highlight: true,
     badge: '転職保証No.1',
   },
   {
     rank: 2,
+    id: 'techcamp',
     name: 'テックキャンプ エンジニア転職',
     tagline: '短期集中・最短10週間でエンジニアへ',
     price: '月額87,500円〜',
@@ -28,12 +30,12 @@ const schools = [
     pros: '最短10週間で転職を実現。オンライン完結で地方からでも受講可能。',
     cons: '短期間のため学習密度が高く、ついていくための覚悟が必要。',
     target: '早期転職を目指す方・会社員が短期で学ぶ場合',
-    url: '#',
     highlight: false,
     badge: '最短転職',
   },
   {
     rank: 3,
+    id: 'runteq',
     name: 'RUNTEQ',
     tagline: 'Webエンジニア特化・1,000時間の実践カリキュラム',
     price: '月額44,000円〜（総額437,800円）',
@@ -43,12 +45,12 @@ const schools = [
     pros: '実務レベルのカリキュラムで自社開発企業への就職に強い。',
     cons: '学習期間が長く、費用も高め。独学力が必要。',
     target: '自社開発企業を目指す方・スキルを徹底的に身につけたい方',
-    url: '#',
     highlight: false,
     badge: '実力養成',
   },
   {
     rank: 4,
+    id: 'techacademy',
     name: 'TechAcademy（テックアカデミー）',
     tagline: '受講者数No.1・業界最大手のオンラインスクール',
     price: '月額29,800円〜',
@@ -58,12 +60,12 @@ const schools = [
     pros: '受講者数・コース数ともに業界最大。自分のペースで学べる。',
     cons: '転職保証はないコースが多い。自己管理力が必要。',
     target: '副業・スキルアップ目的の方・幅広いコースから選びたい方',
-    url: '#',
     highlight: false,
     badge: '受講者数No.1',
   },
   {
     rank: 5,
+    id: 'samurai-engineer',
     name: '侍エンジニア',
     tagline: 'マンツーマン指導・挫折率0%宣言',
     price: '月額69,667円〜',
@@ -73,12 +75,12 @@ const schools = [
     pros: 'マンツーマン指導で挫折しにくい。副業・フリーランス向け支援も充実。',
     cons: '費用が高め。',
     target: '独学で挫折した経験がある方・フリーランスも視野に入れている方',
-    url: '#',
     highlight: false,
     badge: 'マンツーマン',
   },
   {
     rank: 6,
+    id: 'programmer-college',
     name: 'プログラマカレッジ',
     tagline: '完全無料・就職支援特化のスクール',
     price: '無料（就職支援型）',
@@ -88,12 +90,12 @@ const schools = [
     pros: '受講料が完全無料。20代未経験者の就職支援に特化している。',
     cons: '20代限定。受講場所が東京近郊に限られる場合がある。',
     target: '費用をかけずにITエンジニアになりたい20代',
-    url: '#',
     highlight: false,
     badge: '完全無料',
   },
   {
     rank: 7,
+    id: 'zeroplus',
     name: 'ZeroPlus',
     tagline: 'Web制作特化・フリーランス独立支援',
     price: '月額22,000円〜',
@@ -103,7 +105,6 @@ const schools = [
     pros: 'Web制作・フリーランス独立に特化。半永久的なサポートが受けられる。',
     cons: 'Webアプリ開発よりもWeb制作寄りのカリキュラム。',
     target: 'Webデザイン・制作でフリーランス独立を目指す方',
-    url: '#',
     highlight: false,
     badge: 'フリーランス特化',
   },
@@ -231,7 +232,7 @@ const jsonLd = {
               </div>
             </div>
             <div class="card-action">
-              <a href={s.url} rel="sponsored noopener noreferrer" target="_blank" class="btn-cta">
+              <a href={getUrl(affiliateSchools, s.id)} rel="sponsored noopener noreferrer" target="_blank" class="btn-cta">
                 無料カウンセリングを受ける
               </a>
             </div>

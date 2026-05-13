@@ -1,35 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { schools as affiliateSchools, agents as affiliateAgents, getUrl } from '../data/affiliates';
 
 const schools = [
   {
     rank: 1,
-    name: 'テックアカデミー',
-    tagline: '業界最大手・受講生数No.1',
-    price: '月額29,800円〜',
-    period: '4週間〜',
-    features: ['現役エンジニアがメンター', '週2回のメンタリング', '転職支援あり'],
-    url: '#',
-    highlight: true,
-  },
-  {
-    rank: 2,
+    id: 'dmm-webcamp',
     name: 'SHIFT TERAS CAMPUS',
     tagline: '転職成功率98%・給付金で最大70%OFF',
     price: '月額49,800円〜',
     period: '3ヶ月〜',
-    features: ['転職保証コースあり', 'チーム開発経験', '独自カリキュラム'],
-    url: '#',
+    features: ['転職保証コースあり', '給付金制度対応', '専属メンター'],
+    highlight: true,
+  },
+  {
+    rank: 2,
+    id: 'techacademy',
+    name: 'TechAcademy',
+    tagline: '業界最大手・受講生数No.1',
+    price: '月額29,800円〜',
+    period: '4週間〜',
+    features: ['現役エンジニアがメンター', '週2回のメンタリング', '転職支援あり'],
     highlight: false,
   },
   {
     rank: 3,
+    id: 'runteq',
     name: 'RUNTEQ',
     tagline: 'Webエンジニア特化・1,000時間カリキュラム',
     price: '月額44,000円〜',
     period: '5〜9ヶ月',
     features: ['実践的なポートフォリオ', 'コミュニティが充実', '自社開発企業に強い'],
-    url: '#',
     highlight: false,
   },
 ];
@@ -37,24 +38,24 @@ const schools = [
 const agents = [
   {
     rank: 1,
+    id: 'levatech',
     name: 'レバテックキャリア',
     tagline: 'ITエンジニア転職専門・求人数業界最大級',
     features: ['IT特化の専門アドバイザー', '高年収求人が豊富', '面接対策が充実'],
-    url: '#',
   },
   {
     rank: 2,
-    name: 'マイナビIT AGENT',
-    tagline: '未経験〜経験者まで幅広く対応',
-    features: ['未経験可求人が多い', '全国対応', '大手マイナビのネットワーク'],
-    url: '#',
-  },
-  {
-    rank: 3,
+    id: 'uzuz-it',
     name: 'ウズキャリIT',
     tagline: '第二新卒・未経験転職に特化',
     features: ['20代未経験に強い', '内定率86%', 'ブラック企業排除基準あり'],
-    url: '#',
+  },
+  {
+    rank: 3,
+    id: 'mynavi-it',
+    name: 'マイナビIT AGENT',
+    tagline: '未経験〜経験者まで幅広く対応',
+    features: ['未経験可求人が多い', '全国対応', '大手マイナビのネットワーク'],
   },
 ];
 
@@ -170,7 +171,7 @@ const jsonLd = {
               </div>
             </div>
             <div class="card-action">
-              <a href={s.url} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-primary">
+              <a href={getUrl(affiliateSchools, s.id)} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-primary">
                 公式サイトを見る
               </a>
             </div>
@@ -201,7 +202,7 @@ const jsonLd = {
               </ul>
             </div>
             <div class="card-action">
-              <a href={a.url} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-primary">
+              <a href={getUrl(affiliateAgents, a.id)} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-primary">
                 無料で登録する
               </a>
             </div>

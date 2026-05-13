@@ -1,9 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { agents as affiliateAgents, getUrl } from '../data/affiliates';
 
 const agents = [
   {
     rank: 1,
+    id: 'levatech',
     name: 'レバテックキャリア',
     tagline: 'ITエンジニア転職専門・求人数業界最大級',
     target: 'エンジニア経験者・スクール卒業後の転職',
@@ -11,7 +13,6 @@ const agents = [
     pros: 'IT特化の転職エージェントとして業界最大の求人数。専門アドバイザーによる手厚いサポート。',
     cons: '未経験者よりも経験者向けの求人が多め。',
     recommended: 'スクール卒業後・実務経験1年以上の方',
-    url: '#',
     highlight: true,
     badge: '求人数No.1',
     fee: '無料',
@@ -19,6 +20,7 @@ const agents = [
   },
   {
     rank: 2,
+    id: 'uzuz-it',
     name: 'ウズキャリIT',
     tagline: '第二新卒・未経験特化・内定率86%',
     target: '20代未経験・第二新卒',
@@ -26,7 +28,6 @@ const agents = [
     pros: '第二新卒・未経験者に特化。ブラック企業を徹底排除した求人のみ紹介。',
     cons: '30代以上には対応範囲が狭い場合がある。',
     recommended: '20代未経験・第二新卒でIT転職を目指す方',
-    url: '#',
     highlight: false,
     badge: '未経験特化',
     fee: '無料',
@@ -34,6 +35,7 @@ const agents = [
   },
   {
     rank: 3,
+    id: 'mynavi-it',
     name: 'マイナビIT AGENT',
     tagline: '大手マイナビ運営・幅広い求人と手厚いサポート',
     target: '未経験〜経験者まで幅広く',
@@ -41,7 +43,6 @@ const agents = [
     pros: '大手マイナビのネットワークを活かした豊富な求人。全国どこでも対応。',
     cons: '担当者の質にばらつきがある場合がある。',
     recommended: '地方在住・未経験からIT転職を目指す方',
-    url: '#',
     highlight: false,
     badge: '全国対応',
     fee: '無料',
@@ -49,6 +50,7 @@ const agents = [
   },
   {
     rank: 4,
+    id: 'geekly',
     name: 'Geekly（ギークリー）',
     tagline: 'IT・Web・ゲーム業界特化の転職エージェント',
     target: 'IT・Web・ゲーム業界への転職希望者',
@@ -56,7 +58,6 @@ const agents = [
     pros: 'IT・Web・ゲーム業界に特化した専門エージェント。スピード感ある転職が可能。',
     cons: '他業界からの転職や汎用的なIT求人は少なめ。',
     recommended: 'Web系・ゲーム業界に転職したい方',
-    url: '#',
     highlight: false,
     badge: 'スピード転職',
     fee: '無料',
@@ -64,6 +65,7 @@ const agents = [
   },
   {
     rank: 5,
+    id: 'doda',
     name: 'doda',
     tagline: '業界最大級の総合転職エージェント',
     target: '幅広い職種・業界への転職',
@@ -71,7 +73,6 @@ const agents = [
     pros: '総合型で求人の幅が広い。IT以外の選択肢も含めて比較したい方に最適。',
     cons: 'IT特化ではないため、専門的なアドバイスは他社に劣る場合がある。',
     recommended: 'IT以外の選択肢も含めて転職先を検討したい方',
-    url: '#',
     highlight: false,
     badge: '求人数最大級',
     fee: '無料',
@@ -79,6 +80,7 @@ const agents = [
   },
   {
     rank: 6,
+    id: 'tenshoku-draft',
     name: '転職ドラフト',
     tagline: '年収提示型・エンジニア向け競争入札転職',
     target: 'ある程度のスキルを持つエンジニア',
@@ -86,7 +88,6 @@ const agents = [
     pros: '企業が年収を提示してからオファーが来る仕組み。条件面での交渉が有利。',
     cons: 'ある程度のスキルや実績が必要。完全未経験は登録が難しい場合も。',
     recommended: 'スクール卒業後・実務経験1〜2年でキャリアアップを目指す方',
-    url: '#',
     highlight: false,
     badge: '年収重視',
     fee: '無料',
@@ -222,7 +223,7 @@ const jsonLd = {
               </div>
             </div>
             <div class="card-action">
-              <a href={a.url} rel="sponsored noopener noreferrer" target="_blank" class="btn-cta">
+              <a href={getUrl(affiliateAgents, a.id)} rel="sponsored noopener noreferrer" target="_blank" class="btn-cta">
                 無料で登録する
               </a>
             </div>
