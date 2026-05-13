@@ -5,6 +5,5 @@ compatibility_date = "2024-01-01"
 [vars]
 CONTACT_TO_EMAIL = "djkatman@gmail.com"
 
-routes = [
-  { pattern = "contact.progcareer.com/send", zone_name = "progcareer.com" }
-]
+# カスタムドメインはCloudflareダッシュボード > Workers & Pages > progcareer-contact > Settings > Triggers > Custom Domains で設定
+# contact.progcareer.com

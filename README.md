@@ -1,43 +1,53 @@
-# Astro Starter Kit: Minimal
+# ProgCareer（プログキャリア）
+
+未経験からIT転職を目指す人向けのプログラミングスクール・転職エージェント比較メディア。
+
+- **URL:** https://progcareer.com
+- **GitHub:** https://github.com/djkatman/progcareer
+- **デプロイ:** Cloudflare Pages（mainブランチ自動デプロイ）
+
+## 技術構成
+
+- フレームワーク: Astro 6.x
+- Node.js: v24
+- ホスティング: Cloudflare Pages
+- お問い合わせWorker: Cloudflare Workers + Resend
+
+## 開発コマンド
 
 ```sh
-npm create astro@latest -- --template minimal
+# 依存パッケージのインストール
+source ~/.nvm/nvm.sh && nvm use 24
+npm install
+
+# ローカル開発サーバー起動（http://localhost:4321）
+npm run dev
+
+# 本番ビルド
+npm run build
+
+# Workerデプロイ
+cd workers/contact-form && npx wrangler deploy
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## ページ構成
 
-## 🚀 Project Structure
+| パス | 内容 |
+|------|------|
+| `/` | トップページ |
+| `/school-ranking/` | プログラミングスクール比較 |
+| `/agent-ranking/` | IT転職エージェント比較 |
+| `/beginner-guide/` | 未経験ガイド |
+| `/faq/` | よくある質問 |
+| `/about/` | 運営者情報 |
+| `/contact/` | お問い合わせ |
+| `/privacy-policy/` | プライバシーポリシー |
+| `/disclaimer/` | 免責事項 |
 
-Inside of your Astro project, you'll see the following folders and files:
+## アフィリエイトリンク管理
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+`src/data/affiliates.ts` で一元管理。提携承認後は `url` と `status: 'active'` を更新するだけで全ページに反映される。
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## デザインガイド
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+`DESIGN.md` 参照。
