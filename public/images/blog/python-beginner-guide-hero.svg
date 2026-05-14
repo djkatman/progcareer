@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#EFF6FF"/>
+  <rect x="0" y="0" width="800" height="6" fill="#3B82F6"/>
+  <text x="40" y="80" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#0F172A">Python入門 最速5ステップ</text>
+  <!-- Step boxes -->
+  <rect x="40" y="110" width="120" height="60" rx="8" fill="#3B82F6"/>
+  <text x="100" y="145" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">STEP1</text>
+  <text x="100" y="162" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">環境構築</text>
+  <text x="170" y="145" font-family="Arial, sans-serif" font-size="24" fill="#3B82F6" text-anchor="middle">→</text>
+  <rect x="190" y="110" width="120" height="60" rx="8" fill="#3B82F6"/>
+  <text x="250" y="145" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">STEP2</text>
+  <text x="250" y="162" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">基本文法</text>
+  <text x="320" y="145" font-family="Arial, sans-serif" font-size="24" fill="#3B82F6" text-anchor="middle">→</text>
+  <rect x="340" y="110" width="120" height="60" rx="8" fill="#1D4ED8"/>
+  <text x="400" y="145" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">STEP3</text>
+  <text x="400" y="162" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">ミニPJ作成</text>
+  <text x="470" y="145" font-family="Arial, sans-serif" font-size="24" fill="#3B82F6" text-anchor="middle">→</text>
+  <rect x="490" y="110" width="120" height="60" rx="8" fill="#1D4ED8"/>
+  <text x="550" y="145" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">STEP4</text>
+  <text x="550" y="162" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">専門分野</text>
+  <text x="620" y="145" font-family="Arial, sans-serif" font-size="24" fill="#F59E0B" text-anchor="middle">→</text>
+  <rect x="640" y="110" width="120" height="60" rx="8" fill="#F59E0B"/>
+  <text x="700" y="145" font-family="Arial, sans-serif" font-size="14" fill="#0F172A" text-anchor="middle">STEP5</text>
+  <text x="700" y="162" font-family="Arial, sans-serif" font-size="12" fill="#0F172A" text-anchor="middle">PF公開</text>
+  <!-- Period labels -->
+  <text x="100" y="198" font-family="Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">半日</text>
+  <text x="250" y="198" font-family="Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">2〜4週</text>
+  <text x="400" y="198" font-family="Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">1〜2週</text>
+  <text x="550" y="198" font-family="Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">1〜3ヶ月</text>
+  <text x="700" y="198" font-family="Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">2〜4週</text>
+  <!-- Use cases -->
+  <rect x="40" y="240" width="220" height="80" rx="8" fill="#fff" stroke="#3B82F6" stroke-width="2"/>
+  <text x="150" y="268" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1D4ED8" text-anchor="middle">AI・データ分析</text>
+  <text x="150" y="290" font-family="Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">pandas / scikit-learn</text>
+  <text x="150" y="308" font-family="Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">TensorFlow</text>
+  <rect x="290" y="240" width="220" height="80" rx="8" fill="#fff" stroke="#3B82F6" stroke-width="2"/>
+  <text x="400" y="268" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1D4ED8" text-anchor="middle">Web開発</text>
+  <text x="400" y="290" font-family="Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">Django / Flask</text>
+  <text x="400" y="308" font-family="Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">FastAPI</text>
+  <rect x="540" y="240" width="220" height="80" rx="8" fill="#fff" stroke="#F59E0B" stroke-width="2"/>
+  <text x="650" y="268" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#B45309" text-anchor="middle">業務自動化</text>
+  <text x="650" y="290" font-family="Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">openpyxl / Selenium</text>
+  <text x="650" y="308" font-family="Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">フリーランス活用</text>
+  <text x="40" y="415" font-family="Arial, sans-serif" font-size="14" fill="#94A3B8">ProgCareer — progcareer.com</text>
+</svg>
