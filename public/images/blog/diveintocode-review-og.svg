@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0F172A"/>
+  <rect x="0" y="0" width="8" height="630" fill="#3B82F6"/>
+  <rect x="60" y="60" width="1080" height="510" rx="16" fill="#1E293B"/>
+  <text x="100" y="160" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#F8FAFC">ディープロ（DPro）の評判・口コミ</text>
+  <text x="100" y="230" font-family="Arial, sans-serif" font-size="36" fill="#94A3B8">未経験からWebエンジニアになれる？</text>
+  <text x="100" y="290" font-family="Arial, sans-serif" font-size="36" fill="#94A3B8">4ヶ月コースを徹底解説</text>
+  <rect x="100" y="350" width="220" height="60" rx="8" fill="#3B82F6"/>
+  <text x="210" y="389" font-family="Arial, sans-serif" font-size="24" fill="#F8FAFC" text-anchor="middle">総合評価 4.3/5</text>
+  <rect x="340" y="350" width="220" height="60" rx="8" fill="#1D4ED8"/>
+  <text x="450" y="389" font-family="Arial, sans-serif" font-size="24" fill="#F8FAFC" text-anchor="middle">給付金対象</text>
+  <rect x="580" y="350" width="280" height="60" rx="8" fill="#1D4ED8"/>
+  <text x="720" y="389" font-family="Arial, sans-serif" font-size="24" fill="#F8FAFC" text-anchor="middle">実質344,340円〜</text>
+  <text x="100" y="510" font-family="Arial, sans-serif" font-size="28" fill="#F59E0B">ProgCareer | progcareer.com</text>
+</svg>

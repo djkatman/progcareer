@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="350" viewBox="0 0 600 350">
+  <rect width="600" height="350" fill="#F8FAFC"/>
+  <text x="300" y="38" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1E3A5F" text-anchor="middle">ディープロ vs 一般スクール 比較</text>
+  <rect x="20" y="55" width="560" height="36" rx="4" fill="#1E3A5F"/>
+  <text x="200" y="79" font-family="Arial, sans-serif" font-size="14" fill="#F8FAFC" text-anchor="middle">項目</text>
+  <text x="380" y="79" font-family="Arial, sans-serif" font-size="14" fill="#F8FAFC" text-anchor="middle">ディープロ</text>
+  <text x="530" y="79" font-family="Arial, sans-serif" font-size="14" fill="#F8FAFC" text-anchor="middle">一般スクール</text>
+  <rect x="20" y="91" width="560" height="36" fill="#EFF6FF"/>
+  <text x="200" y="115" font-family="Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">就職サポート年齢</text>
+  <text x="380" y="115" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1D4ED8" text-anchor="middle">制限なし</text>
+  <text x="530" y="115" font-family="Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">〜32歳が多い</text>
+  <rect x="20" y="127" width="560" height="36" fill="#F8FAFC"/>
+  <text x="200" y="151" font-family="Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">就職先レベル</text>
+  <text x="380" y="151" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1D4ED8" text-anchor="middle">実務2〜3年相当</text>
+  <text x="530" y="151" font-family="Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">未経験向け</text>
+  <rect x="20" y="163" width="560" height="36" fill="#EFF6FF"/>
+  <text x="200" y="187" font-family="Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">就職サポート期間</text>
+  <text x="380" y="187" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1D4ED8" text-anchor="middle">10ヶ月（無償）</text>
+  <text x="530" y="187" font-family="Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">3〜6ヶ月程度</text>
+  <rect x="20" y="199" width="560" height="36" fill="#F8FAFC"/>
+  <text x="200" y="223" font-family="Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">卒業後の学習サポート</text>
+  <text x="380" y="223" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1D4ED8" text-anchor="middle">永久閲覧・質問可</text>
+  <text x="530" y="223" font-family="Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">なし</text>
+  <rect x="20" y="235" width="560" height="36" fill="#EFF6FF"/>
+  <text x="200" y="259" font-family="Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">コミュニティ</text>
+  <text x="380" y="259" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1D4ED8" text-anchor="middle">1,400名超</text>
+  <text x="530" y="259" font-family="Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">限定的</text>
+  <rect x="20" y="271" width="560" height="36" fill="#F8FAFC"/>
+  <text x="200" y="295" font-family="Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">実質受講料（給付金後）</text>
+  <text x="380" y="295" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1D4ED8" text-anchor="middle">344,340円〜</text>
+  <text x="530" y="295" font-family="Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">50〜80万円程度</text>
+  <text x="300" y="338" font-family="Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="middle">ProgCareer 編集部調べ（2026年5月時点）</text>
+</svg>

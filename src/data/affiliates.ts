@@ -178,6 +178,15 @@ export const schools: AffiliateItem[] = [
     url: 'https://www.webcoach.jp/moshimo',
     affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5558643&p_id=5266&pc_id=14299&pl_id=68957',
   },
+  {
+    id: 'diveintocode',
+    name: 'ディープロ［プログラミング講座］',
+    asp: 'アクセストレード',
+    status: 'active',
+    url: 'https://diveintocode.jp/',
+    affiliate_url: 'https://h.accesstrade.net/sp/cc?rk=0100kjc800osj9',
+    note: 'https://docbase.io/posts/2370570/sharing/67afbed9-c420-44c3-b24b-266fa9573fc8',
+  },
 ];
 // 転職エージェント
 export const agents: AffiliateItem[] = [

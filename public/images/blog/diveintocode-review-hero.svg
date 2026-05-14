@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#EFF6FF"/>
+  <rect x="0" y="0" width="800" height="6" fill="#3B82F6"/>
+  <text x="400" y="100" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#1E3A5F" text-anchor="middle">ディープロ（DPro）</text>
+  <text x="400" y="148" font-family="Arial, sans-serif" font-size="24" fill="#334155" text-anchor="middle">評判・口コミ完全ガイド</text>
+  <rect x="80" y="190" width="180" height="100" rx="12" fill="#3B82F6"/>
+  <text x="170" y="235" font-family="Arial, sans-serif" font-size="16" fill="#F8FAFC" text-anchor="middle">総合評価</text>
+  <text x="170" y="270" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#F8FAFC" text-anchor="middle">4.3/5</text>
+  <rect x="310" y="190" width="180" height="100" rx="12" fill="#1D4ED8"/>
+  <text x="400" y="235" font-family="Arial, sans-serif" font-size="16" fill="#F8FAFC" text-anchor="middle">実質受講料</text>
+  <text x="400" y="265" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#F8FAFC" text-anchor="middle">344,340円</text>
+  <rect x="540" y="190" width="180" height="100" rx="12" fill="#1E40AF"/>
+  <text x="630" y="235" font-family="Arial, sans-serif" font-size="16" fill="#F8FAFC" text-anchor="middle">就職サポート</text>
+  <text x="630" y="265" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#F8FAFC" text-anchor="middle">10ヶ月間</text>
+  <text x="400" y="360" font-family="Arial, sans-serif" font-size="18" fill="#475569" text-anchor="middle">旧DIVE INTO CODE｜3万人超が利用｜経産省認定</text>
+  <text x="400" y="420" font-family="Arial, sans-serif" font-size="14" fill="#94A3B8" text-anchor="middle">ProgCareer | progcareer.com</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="350" viewBox="0 0 600 350">
+  <rect width="600" height="350" fill="#F8FAFC"/>
+  <text x="300" y="40" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1E3A5F" text-anchor="middle">ディープロ 口コミ評価分布（75人）</text>
+  <text x="60" y="90" font-family="Arial, sans-serif" font-size="16" fill="#334155">★5</text>
+  <rect x="90" y="72" width="270" height="28" rx="4" fill="#3B82F6"/>
+  <text x="370" y="90" font-family="Arial, sans-serif" font-size="16" fill="#334155">45%</text>
+  <text x="60" y="135" font-family="Arial, sans-serif" font-size="16" fill="#334155">★4</text>
+  <rect x="90" y="117" width="246" height="28" rx="4" fill="#60A5FA"/>
+  <text x="346" y="135" font-family="Arial, sans-serif" font-size="16" fill="#334155">41%</text>
+  <text x="60" y="180" font-family="Arial, sans-serif" font-size="16" fill="#334155">★3</text>
+  <rect x="90" y="162" width="78" height="28" rx="4" fill="#93C5FD"/>
+  <text x="178" y="180" font-family="Arial, sans-serif" font-size="16" fill="#334155">13%</text>
+  <text x="60" y="225" font-family="Arial, sans-serif" font-size="16" fill="#334155">★2</text>
+  <rect x="90" y="207" width="4" height="28" rx="2" fill="#CBD5E1"/>
+  <text x="104" y="225" font-family="Arial, sans-serif" font-size="16" fill="#334155">0%</text>
+  <text x="60" y="270" font-family="Arial, sans-serif" font-size="16" fill="#334155">★1</text>
+  <rect x="90" y="252" width="4" height="28" rx="2" fill="#CBD5E1"/>
+  <text x="104" y="270" font-family="Arial, sans-serif" font-size="16" fill="#334155">0%</text>
+  <rect x="60" y="305" width="480" height="2" fill="#E2E8F0"/>
+  <text x="300" y="335" font-family="Arial, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">総合評価 4.3/5 ｜ReviewBank 第三者認証済み（75件）</text>
+</svg>
