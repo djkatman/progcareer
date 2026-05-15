@@ -251,6 +251,14 @@ export const freelance: AffiliateItem[] = [
     url: 'https://it-kyujin.jp/?type=text&affiliate=moshimo&rd_code=Sample123',
     affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5557947&p_id=3026&pc_id=6979&pl_id=51654',
   },
+  {
+    id: 'selwork',
+    name: 'セルワークITフリーランス',
+    asp: 'もしもアフィリエイト',
+    status: 'active',
+    url: 'https://selwork.jp/tecgate-freelance/',
+    affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5557925&p_id=7290&pc_id=20926&pl_id=91815',
+  },
 ];
 // ────────────────────────────────────────────
 // その他カテゴリ（提携が取れたら追加していく）
