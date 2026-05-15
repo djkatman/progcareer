@@ -21,7 +21,7 @@ export const schools: AffiliateItem[] = [
     name: 'SHIFT TERAS CAMPUS（旧DMM WEBCAMP）',
     asp: 'もしもアフィリエイト',
     status: 'active',
-    url: 'https://web-camp.io/',
+    url: 'https://dep.tc/link?mid=4969971140526080&ad=2rFaqeHsRsJ&rd_code=Sample123',
     affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5557871&p_id=1000&pc_id=1380&pl_id=17483',
   },
   {

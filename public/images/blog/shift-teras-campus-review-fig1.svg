@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="350" viewBox="0 0 600 350">
+  <rect width="600" height="350" fill="#F8FAFC"/>
+  <text x="300" y="40" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1E3A5F" text-anchor="middle">コース別料金比較（給付金適用後）</text>
+  <!-- 就業両立コース -->
+  <rect x="40" y="70" width="160" height="220" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="120" y="105" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1E40AF" text-anchor="middle">就業両立</text>
+  <text x="120" y="125" font-family="Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">コース</text>
+  <text x="120" y="175" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#3B82F6" text-anchor="middle">76,000円〜</text>
+  <text x="120" y="200" font-family="Arial, sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">給付金適用後</text>
+  <text x="120" y="230" font-family="Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">総額209,000円</text>
+  <text x="120" y="255" font-family="Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">分割18,811円×12</text>
+  <!-- 専門技術コース -->
+  <rect x="220" y="70" width="160" height="220" rx="10" fill="#FFF7ED" stroke="#F59E0B" stroke-width="2"/>
+  <text x="300" y="105" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#92400E" text-anchor="middle">専門技術</text>
+  <text x="300" y="125" font-family="Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">コース</text>
+  <text x="300" y="175" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#F59E0B" text-anchor="middle">84,000円〜</text>
+  <text x="300" y="200" font-family="Arial, sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">給付金適用後</text>
+  <text x="300" y="230" font-family="Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">総額231,000円</text>
+  <text x="300" y="255" font-family="Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">分割20,790円×12</text>
+  <!-- 短期集中コース -->
+  <rect x="400" y="70" width="160" height="220" rx="10" fill="#F0FDF4" stroke="#10B981" stroke-width="2"/>
+  <text x="480" y="105" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#065F46" text-anchor="middle">短期集中</text>
+  <text x="480" y="125" font-family="Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">コース</text>
+  <text x="480" y="175" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#10B981" text-anchor="middle">56,000円〜</text>
+  <text x="480" y="200" font-family="Arial, sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">給付金適用後</text>
+  <text x="480" y="230" font-family="Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">総額154,000円</text>
+  <text x="480" y="255" font-family="Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">分割13,860円×12</text>
+  <text x="300" y="325" font-family="Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="middle">※給付金は雇用保険加入者が対象。最大70%還付。</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0F172A"/>
+  <rect x="0" y="0" width="8" height="630" fill="#3B82F6"/>
+  <text x="80" y="180" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="#F8FAFC">SHIFT TERAS CAMPUS</text>
+  <text x="80" y="250" font-family="Arial, sans-serif" font-size="38" fill="#94A3B8">評判・口コミ完全ガイド</text>
+  <text x="80" y="320" font-family="Arial, sans-serif" font-size="28" fill="#64748B">旧DMM WEBCAMPから何が変わった？</text>
+  <rect x="80" y="380" width="320" height="60" rx="8" fill="#3B82F6"/>
+  <text x="240" y="418" font-family="Arial, sans-serif" font-size="22" fill="#FFFFFF" text-anchor="middle">転職保証あり</text>
+  <rect x="420" y="380" width="320" height="60" rx="8" fill="#F59E0B"/>
+  <text x="580" y="418" font-family="Arial, sans-serif" font-size="22" fill="#0F172A" text-anchor="middle">給付金最大70%還付</text>
+  <text x="80" y="530" font-family="Arial, sans-serif" font-size="22" fill="#475569">ProgCareer | progcareer.com</text>
+</svg>
