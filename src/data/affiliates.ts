@@ -187,6 +187,15 @@ export const schools: AffiliateItem[] = [
     affiliate_url: 'https://h.accesstrade.net/sp/cc?rk=0100kjc800osj9',
     note: 'https://docbase.io/posts/2370570/sharing/67afbed9-c420-44c3-b24b-266fa9573fc8',
   },
+  {
+    id: 'techmeets',
+    name: 'techmeets-プログラミングスクールの無料カウンセリング着座',
+    asp: 'アクセストレード',
+    status: 'active',
+    url: 'https://techmeets.jp/engineer-expart-001/?rd_code=Sample123',
+    affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5557829&p_id=7180&pc_id=20561&pl_id=90337',
+    note: 'https://techmeets.jp/engineer-expart-001/?rd_code=Sample123',
+  },
 ];
 // 転職エージェント
 export const agents: AffiliateItem[] = [
@@ -231,6 +240,15 @@ export const agents: AffiliateItem[] = [
     asp: 'もしもアフィリエイト',
     status: 'pending',
     url: 'https://job-draft.jp/',
+  },
+  {
+    id: 'wacul-ai',
+    name: 'MarketerAgentクリエイティブ - フリーランスクリエイター向け 案件紹介サービス',
+    asp: 'もしもアフィリエイト',
+    status: 'active',
+    url: 'https://wacul-ai.com/service-cop/marketer-agent/creator/?utm_source=Affi&utm_medium=cpc&utm_campaign=Intasect_Creator&cidsid=L1vBLank0YDk2yqZ54a_Bw..&_isc_id=L1vBLank0YDk2yqZ54a_Bw..&rd_code=Sample123',
+    affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5558604&p_id=5243&pc_id=14218&pl_id=68722',
+    note: 'https://wacul-ai.com/service-cop/marketer-agent/creator/?utm_source=Affi&utm_medium=cpc&utm_campaign=Intasect_Creator&cidsid=L1vBLank0YASxXcw3JQPXw..&_isc_id=L1vBLank0YASxXcw3JQPXw..&rd_code=Sample123',
   },
 ];
 // フリーランス案件検索
