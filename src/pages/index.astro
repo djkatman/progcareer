@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { schools as affiliateSchools, agents as affiliateAgents, getUrl } from '../data/affiliates';
+import { schools as affiliateSchools, agents as affiliateAgents, freelance as affiliateFreelance, getUrl } from '../data/affiliates';
 import { getCollection } from 'astro:content';
 
 const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -61,6 +61,30 @@ const agents = [
     name: 'マイナビIT AGENT',
     tagline: '未経験〜経験者まで幅広く対応',
     features: ['未経験可求人が多い', '全国対応', '大手マイナビのネットワーク'],
+  },
+];
+
+const freelanceServices = [
+  {
+    rank: 1,
+    id: 'freelance-board',
+    name: 'フリーランスボード',
+    tagline: '案件数No.1級・スキルマッチングで最適案件を自動提案',
+    features: ['案件数が業界最多水準', 'スキルマッチング機能', 'リモート案件が豊富'],
+  },
+  {
+    rank: 2,
+    id: 'it-kyujin',
+    name: 'IT求人ナビ フリーランス',
+    tagline: 'IT特化・契約サポートも充実',
+    features: ['IT特化の案件のみ', '契約・請求書管理サポート', '初フリーランスも安心'],
+  },
+  {
+    rank: 3,
+    id: 'freelance-concierge',
+    name: 'フリコン',
+    tagline: 'コンシェルジュが独立まで伴走サポート',
+    features: ['専任コンシェルジュ担当', '独立相談も対応', '税務サポート連携'],
   },
 ];
 
@@ -134,6 +158,7 @@ const jsonLd = {
       <div class="hero-cta-wrap">
         <a href="/school-ranking/" class="btn btn-primary">スクールを比較する</a>
         <a href="/agent-ranking/" class="btn btn-outline">転職エージェントを見る</a>
+        <a href="/freelance-jobs/" class="btn btn-outline">フリーランス案件を探す</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
@@ -143,6 +168,10 @@ const jsonLd = {
         <div class="stat-item">
           <span class="stat-num">10社</span>
           <span class="stat-label">掲載エージェント</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">4社</span>
+          <span class="stat-label">フリーランス案件</span>
         </div>
         <div class="stat-item">
           <span class="stat-num">随時</span>
@@ -218,6 +247,40 @@ const jsonLd = {
     </div>
   </section>
 
+  <!-- フリーランス案件検索 TOP3 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">フリーランス案件検索サービス TOP3</h2>
+      <p class="section-desc">フリーランスエンジニアとして独立・副業案件を探す方向けのサービスを厳選しました。</p>
+      <div class="ranking-list">
+        {freelanceServices.map(s => (
+          <div class={`ranking-card${s.rank === 1 ? ' is-top' : ''}`}>
+            <div class="rank-badge" style={`background: ${rankColors[s.rank] ?? '#64748B'}`}>
+              <span class="rank-num">{s.rank}</span>
+              <span class="rank-label">位</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">{s.name}</h3>
+              <p class="card-tagline">{s.tagline}</p>
+              <ul class="card-features">
+                {s.features.map(f => <li>{f}</li>)}
+              </ul>
+            </div>
+            <div class="card-action">
+              <a href={getUrl(affiliateFreelance, s.id)} rel="sponsored noopener noreferrer" target="_blank" class="btn btn-primary">
+                無料で登録する
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="text-align:center; margin-top: 24px;">
+        <a href="/freelance-jobs/" class="btn-outline-dark">フリーランス案件サービスをすべて見る →</a>
+      </div>
+      <p class="affiliate-note">※ 本ランキングにはアフィリエイトリンクが含まれます。</p>
+    </div>
+  </section>
+
   <!-- このサイトでわかること -->
   <section class="section">
     <div class="container">
@@ -260,6 +323,19 @@ const jsonLd = {
           <div class="feature-text">
             <h3>未経験ガイドを読む</h3>
             <p>「何から始めればいい？」を解消。学習ロードマップから転職活動の流れまでわかりやすく解説します。</p>
+          </div>
+        </a>
+        <a href="/freelance-jobs/" class="feature-card">
+          <img
+            src="/images/feature-freelance.jpg"
+            alt="フリーランスエンジニアのイメージ"
+            width="400"
+            height="260"
+            loading="lazy"
+          />
+          <div class="feature-text">
+            <h3>フリーランス案件を探す</h3>
+            <p>独立・副業案件を探せるサービスを比較。初めてのフリーランスも安心して使えるサービスが見つかります。</p>
           </div>
         </a>
       </div>
@@ -487,8 +563,8 @@ const jsonLd = {
   /* 特徴グリッド */
   .feature-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
   }
   .feature-card {
     background: var(--color-surface);
@@ -619,14 +695,15 @@ const jsonLd = {
   /* レスポンシブ */
   @media (max-width: 900px) {
     .blog-grid { grid-template-columns: 1fr; }
-    .feature-grid { grid-template-columns: 1fr; }
+    .feature-grid { grid-template-columns: repeat(2, 1fr); }
     .ranking-card { grid-template-columns: 56px 1fr; }
     .card-action { grid-column: 1 / -1; align-items: stretch; }
     .card-action .btn { width: 100%; }
   }
   @media (max-width: 600px) {
     .hero { padding: 80px 20px; }
-    .hero-stats { gap: 24px; display: grid; grid-template-columns: 1fr 1fr; }
+    .hero-stats { gap: 16px; display: grid; grid-template-columns: 1fr 1fr; }
+    .feature-grid { grid-template-columns: 1fr; }
     .ranking-card { grid-template-columns: 1fr; }
     .rank-badge { width: 44px; height: 44px; }
   }

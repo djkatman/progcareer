@@ -196,6 +196,15 @@ export const schools: AffiliateItem[] = [
     affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5557829&p_id=7180&pc_id=20561&pl_id=90337',
     note: 'https://techmeets.jp/engineer-expart-001/?rd_code=Sample123',
   },
+  {
+    id: 'zero-school',
+    name: '0円スクール（ゼロスク）- Javaプログラミングスクール',
+    asp: 'もしもアフィリエイト',
+    status: 'active',
+    url: 'https://zero-school.com/new/',
+    affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5557866&p_id=1439&pc_id=2520&pl_id=38790',
+    note: 'https://zero-school.com/new/',
+  },
 ];
 // 転職エージェント
 export const agents: AffiliateItem[] = [
@@ -276,6 +285,15 @@ export const freelance: AffiliateItem[] = [
     status: 'active',
     url: 'https://selwork.jp/tecgate-freelance/',
     affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5557925&p_id=7290&pc_id=20926&pl_id=91815',
+  },
+  {
+    id: 'freelance-concierge',
+    name: 'フリコン - フリーランス向け案件紹介コンシェルジュサービス',
+    asp: 'もしもアフィリエイト',
+    status: 'active',
+    url: 'https://freelance-concierge.jp/lp/?utm_source=moshimo&utm_medium=afl',
+    affiliate_url: 'https://af.moshimo.com/af/c/click?a_id=5557936&p_id=3841&pc_id=9491&pl_id=53318',
+    note: 'https://freelance-concierge.jp/lp/?utm_source=moshimo&utm_medium=afl',
   },
 ];
 // ────────────────────────────────────────────

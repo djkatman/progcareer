@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { freelance, getUrl } from '../data/affiliates';
+
+const services = [
+  {
+    rank: 1,
+    id: 'freelance-board',
+    name: 'フリーランスボード',
+    tagline: '案件数No.1級・スキルマッチングで最適案件を自動提案',
+    target: '経験1年以上のフリーランスエンジニア',
+    features: ['案件数が業界最多水準', 'スキルマッチング機能', '単価交渉サポート', 'リモート案件が豊富'],
+    pros: '掲載案件数が多く、幅広いスキルセットに対応。スキルを登録するだけで案件が自動マッチングされる。',
+    cons: '未経験・実務経験なしには対応案件が少ない。',
+    recommended: '実務経験1年以上・独立を検討しているエンジニア',
+    highlight: true,
+    badge: '案件数最多水準',
+    fee: '無料',
+    condition: '無料登録',
+  },
+  {
+    rank: 2,
+    id: 'it-kyujin',
+    name: 'IT求人ナビ フリーランス',
+    tagline: 'IT特化・フリーランス案件に強い専門サービス',
+    target: 'フリーランス転向を検討しているITエンジニア',
+    features: ['IT特化の案件のみ掲載', 'フリーランス専門サポート', '単価目安が明示', '契約・請求書管理サポート'],
+    pros: 'IT案件に特化しているため求人の質が高い。契約まわりのサポートが充実しており、初めてのフリーランスでも安心。',
+    cons: 'IT以外のジャンルには非対応。',
+    recommended: '初めてフリーランスに挑戦するITエンジニア',
+    highlight: false,
+    badge: 'IT特化',
+    fee: '無料',
+    condition: '無料登録',
+  },
+  {
+    rank: 3,
+    id: 'selwork',
+    name: 'セルワークITフリーランス',
+    tagline: 'エンジニア向けフリーランス案件・高単価に強い',
+    target: '高単価案件を狙うシニアエンジニア',
+    features: ['高単価案件が多い', 'エンジニア専門担当者', '週3〜4日案件あり', '稼働条件が柔軟'],
+    pros: '高単価・週3〜4日などの柔軟な稼働条件の案件が多い。副業としてフリーランス案件を受けたい方にも対応。',
+    cons: 'ジュニア層向けの案件は少なめ。',
+    recommended: '副業・ダブルワークでフリーランス案件を探している方',
+    highlight: false,
+    badge: '高単価・柔軟稼働',
+    fee: '無料',
+    condition: '無料登録',
+  },
+  {
+    rank: 4,
+    id: 'freelance-concierge',
+    name: 'フリコン',
+    tagline: 'フリーランス向けコンシェルジュ型案件紹介サービス',
+    target: 'フリーランス独立に不安を感じているエンジニア',
+    features: ['専任コンシェルジュが担当', '案件提案から契約まで伴走', '税務・確定申告サポート連携', '独立相談も対応'],
+    pros: '案件紹介だけでなく独立に関する相談にも対応。はじめてのフリーランスでも丁寧にサポートしてもらえる。',
+    cons: 'コンシェルジュ対応のため掲載案件数は大手に劣る場合がある。',
+    recommended: 'フリーランス独立を検討中・はじめて案件を探す方',
+    highlight: false,
+    badge: 'コンシェルジュ型',
+    fee: '無料',
+    condition: '無料相談',
+  },
+];
+
+const comparisons = [
+  { label: '案件数を重視したい', services: ['フリーランスボード', 'IT求人ナビ フリーランス'], reason: '掲載数が多い2サービスに登録することで、より多くの選択肢から最適な案件を選べます。' },
+  { label: '初めてのフリーランス', services: ['IT求人ナビ フリーランス', 'フリコン'], reason: 'サポートが手厚い2サービスの組み合わせ。契約・確定申告まで相談できて安心です。' },
+  { label: '高単価・副業案件を探したい', services: ['フリーランスボード', 'セルワークITフリーランス'], reason: '高単価案件が豊富な2サービスで、条件の良い案件を比較検討できます。' },
+];
+
+const faqs = [
+  { q: 'フリーランス案件検索サービスは無料で使えますか？', a: 'はい、本記事で紹介しているサービスはすべて求職者（フリーランス）側の利用は無料です。サービス側は企業（クライアント）からの手数料で収益を得ています。' },
+  { q: '未経験からフリーランスになれますか？', a: 'フリーランス案件の多くは実務経験を求めます。まずはプログラミングスクールや転職を通じて1〜2年の実務経験を積み、その後フリーランスに転向するルートが現実的です。' },
+  { q: '複数のサービスに登録してもいいですか？', a: '問題ありません。2〜3サービスに並行登録して案件を比較することが一般的です。サービスによって掲載案件が異なるため、登録数が多いほど選択肢が広がります。' },
+  { q: 'フリーランスエンジニアの平均月収はいくらですか？', a: '経験やスキルにより大きく異なりますが、ITエンジニアのフリーランスは月50〜100万円程度が一般的な水準です。高単価スキル（AWS・機械学習など）を持つ方はさらに高収入も可能です。' },
+  { q: '正社員からフリーランスに転向する際の注意点は？', a: '社会保険・年金の手続き変更、確定申告、案件の空白期間リスクなどがあります。フリコンなどコンシェルジュ型サービスに相談しながら、計画的に準備を進めることをおすすめします。' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ItemList',
+      name: 'フリーランス案件検索サービスおすすめ比較2026',
+      itemListElement: services.map((s, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: s.name,
+        description: s.tagline,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+
+const badgeColors: Record<number, string> = { 1: '#F59E0B', 2: '#94A3B8', 3: '#D97706' };
+
+// アフィリエイトURLをidから取得するマップ
+const affiliateUrls: Record<string, string> = {};
+for (const item of freelance) {
+  affiliateUrls[item.id] = item.affiliate_url;
+}
+---
+
+<Layout
+  title="フリーランス案件検索サービスおすすめ比較【2026年最新】エンジニア向け"
+  description="フリーランスエンジニア向けの案件検索・マッチングサービスを徹底比較。案件数・単価・サポート内容を総合評価したランキングと選び方を解説します。"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <!-- PR表記 -->
+    <p class="text-xs text-gray-500 mb-4 p-2 bg-gray-50 rounded">※本ページはアフィリエイト広告を含みます。掲載情報は編集部が独自に調査・評価しています。</p>
+
+    <h1 class="text-2xl font-bold text-gray-900 mb-2">フリーランス案件検索サービスおすすめ比較【2026年最新】</h1>
+    <p class="text-gray-600 mb-6">エンジニアのフリーランス転向・副業案件探しに役立つサービスを案件数・単価・サポート体制で徹底比較しました。</p>
+
+    <!-- 比較テーブル -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">サービス比較一覧</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="border border-gray-200 px-3 py-2 text-left">サービス名</th>
+              <th class="border border-gray-200 px-3 py-2 text-center">特徴</th>
+              <th class="border border-gray-200 px-3 py-2 text-center">向いている人</th>
+              <th class="border border-gray-200 px-3 py-2 text-center">料金</th>
+            </tr>
+          </thead>
+          <tbody>
+            {services.map((s) => (
+              <tr class={s.highlight ? 'bg-amber-50' : 'bg-white'}>
+                <td class="border border-gray-200 px-3 py-2 font-medium">{s.name}</td>
+                <td class="border border-gray-200 px-3 py-2 text-gray-600">{s.badge}</td>
+                <td class="border border-gray-200 px-3 py-2 text-gray-600 text-xs">{s.recommended}</td>
+                <td class="border border-gray-200 px-3 py-2 text-center text-green-600 font-medium">{s.fee}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 個別カード -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-800 mb-6">おすすめサービス詳細</h2>
+      <div class="space-y-6">
+        {services.map((s) => (
+          <div class={`border rounded-lg p-6 ${s.highlight ? 'border-amber-400 bg-amber-50' : 'border-gray-200 bg-white'}`}>
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <span class="inline-block text-xs font-bold px-2 py-1 rounded mr-2" style={`background: ${badgeColors[s.rank] ?? '#6B7280'}; color: white;`}>
+                  第{s.rank}位
+                </span>
+                <span class="inline-block text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">{s.badge}</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{s.name}</h3>
+            <p class="text-gray-600 text-sm mb-3">{s.tagline}</p>
+            <ul class="grid grid-cols-2 gap-1 mb-4">
+              {s.features.map((f) => (
+                <li class="text-xs text-gray-700 flex items-center gap-1">
+                  <span class="text-green-500">✓</span>{f}
+                </li>
+              ))}
+            </ul>
+            <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+              <div class="bg-green-50 rounded p-2">
+                <p class="text-xs font-bold text-green-700 mb-1">メリット</p>
+                <p class="text-xs text-gray-700">{s.pros}</p>
+              </div>
+              <div class="bg-red-50 rounded p-2">
+                <p class="text-xs font-bold text-red-700 mb-1">デメリット</p>
+                <p class="text-xs text-gray-700">{s.cons}</p>
+              </div>
+            </div>
+            <p class="text-xs text-gray-500 mb-3">こんな人におすすめ: {s.recommended}</p>
+            <a
+              href={affiliateUrls[s.id]}
+              rel="sponsored"
+              target="_blank"
+              class={`inline-block w-full text-center py-3 px-6 rounded-lg font-bold text-sm transition-colors ${s.highlight ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
+            >
+              {s.name}の公式サイトを見る（{s.condition}）
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 目的別おすすめ組み合わせ -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">目的別おすすめ登録パターン</h2>
+      <div class="space-y-4">
+        {comparisons.map((c) => (
+          <div class="border border-blue-200 rounded-lg p-4 bg-blue-50">
+            <p class="font-bold text-blue-800 mb-1">🎯 {c.label}</p>
+            <p class="text-sm font-medium text-gray-800 mb-1">{c.services.join(' ＋ ')}</p>
+            <p class="text-xs text-gray-600">{c.reason}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">よくある質問</h2>
+      <div class="space-y-4">
+        {faqs.map((f) => (
+          <details class="border border-gray-200 rounded-lg">
+            <summary class="px-4 py-3 font-medium text-gray-800 cursor-pointer">{f.q}</summary>
+            <p class="px-4 pb-3 text-sm text-gray-600">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- 内部リンク -->
+    <section class="mb-6 p-4 bg-gray-50 rounded-lg">
+      <h2 class="text-base font-bold text-gray-800 mb-3">関連記事</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/school-ranking/" class="text-blue-600 hover:underline">→ プログラミングスクール比較ランキング【2026年最新】</a></li>
+        <li><a href="/agent-ranking/" class="text-blue-600 hover:underline">→ IT転職エージェントおすすめランキング【2026年最新】</a></li>
+        <li><a href="/blog/engineer-career-change-roadmap/" class="text-blue-600 hover:underline">→ 未経験からIT転職を成功させるロードマップ</a></li>
+      </ul>
+    </section>
+  </main>
+</Layout>
