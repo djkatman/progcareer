@@ -105,7 +105,6 @@ const jsonLd = {
 
 const badgeColors: Record<number, string> = { 1: '#F59E0B', 2: '#94A3B8', 3: '#D97706' };
 
-// アフィリエイトURLをidから取得するマップ
 const affiliateUrls: Record<string, string> = {};
 for (const item of freelance) {
   affiliateUrls[item.id] = item.affiliate_url;
@@ -118,122 +117,447 @@ for (const item of freelance) {
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-  <main class="max-w-4xl mx-auto px-4 py-8">
-    <!-- PR表記 -->
-    <p class="text-xs text-gray-500 mb-4 p-2 bg-gray-50 rounded">※本ページはアフィリエイト広告を含みます。掲載情報は編集部が独自に調査・評価しています。</p>
+  <div class="page-wrapper">
+    <div class="container">
 
-    <h1 class="text-2xl font-bold text-gray-900 mb-2">フリーランス案件検索サービスおすすめ比較【2026年最新】</h1>
-    <p class="text-gray-600 mb-6">エンジニアのフリーランス転向・副業案件探しに役立つサービスを案件数・単価・サポート体制で徹底比較しました。</p>
+      <p class="pr-note">※本ページはアフィリエイト広告を含みます。掲載情報は編集部が独自に調査・評価しています。</p>
 
-    <!-- 比較テーブル -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-gray-800 mb-4">サービス比較一覧</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse">
-          <thead>
-            <tr class="bg-gray-100">
-              <th class="border border-gray-200 px-3 py-2 text-left">サービス名</th>
-              <th class="border border-gray-200 px-3 py-2 text-center">特徴</th>
-              <th class="border border-gray-200 px-3 py-2 text-center">向いている人</th>
-              <th class="border border-gray-200 px-3 py-2 text-center">料金</th>
-            </tr>
-          </thead>
-          <tbody>
-            {services.map((s) => (
-              <tr class={s.highlight ? 'bg-amber-50' : 'bg-white'}>
-                <td class="border border-gray-200 px-3 py-2 font-medium">{s.name}</td>
-                <td class="border border-gray-200 px-3 py-2 text-gray-600">{s.badge}</td>
-                <td class="border border-gray-200 px-3 py-2 text-gray-600 text-xs">{s.recommended}</td>
-                <td class="border border-gray-200 px-3 py-2 text-center text-green-600 font-medium">{s.fee}</td>
+      <h1 class="page-title">フリーランス案件検索サービスおすすめ比較【2026年最新】</h1>
+      <p class="page-lead">エンジニアのフリーランス転向・副業案件探しに役立つサービスを案件数・単価・サポート体制で徹底比較しました。</p>
+
+      <!-- 比較テーブル -->
+      <section class="section">
+        <h2 class="section-title">サービス比較一覧</h2>
+        <div class="table-scroll">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>サービス名</th>
+                <th>特徴</th>
+                <th>向いている人</th>
+                <th>料金</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- 個別カード -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-gray-800 mb-6">おすすめサービス詳細</h2>
-      <div class="space-y-6">
-        {services.map((s) => (
-          <div class={`border rounded-lg p-6 ${s.highlight ? 'border-amber-400 bg-amber-50' : 'border-gray-200 bg-white'}`}>
-            <div class="flex items-start justify-between mb-3">
-              <div>
-                <span class="inline-block text-xs font-bold px-2 py-1 rounded mr-2" style={`background: ${badgeColors[s.rank] ?? '#6B7280'}; color: white;`}>
-                  第{s.rank}位
-                </span>
-                <span class="inline-block text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">{s.badge}</span>
-              </div>
-            </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-1">{s.name}</h3>
-            <p class="text-gray-600 text-sm mb-3">{s.tagline}</p>
-            <ul class="grid grid-cols-2 gap-1 mb-4">
-              {s.features.map((f) => (
-                <li class="text-xs text-gray-700 flex items-center gap-1">
-                  <span class="text-green-500">✓</span>{f}
-                </li>
+            </thead>
+            <tbody>
+              {services.map((s) => (
+                <tr class={s.highlight ? 'row-highlight' : ''}>
+                  <td class="td-name">{s.name}</td>
+                  <td class="td-badge">{s.badge}</td>
+                  <td class="td-target">{s.recommended}</td>
+                  <td class="td-fee">{s.fee}</td>
+                </tr>
               ))}
-            </ul>
-            <div class="grid grid-cols-2 gap-3 text-sm mb-4">
-              <div class="bg-green-50 rounded p-2">
-                <p class="text-xs font-bold text-green-700 mb-1">メリット</p>
-                <p class="text-xs text-gray-700">{s.pros}</p>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 個別カード -->
+      <section class="section">
+        <h2 class="section-title">おすすめサービス詳細</h2>
+        <div class="card-list">
+          {services.map((s) => (
+            <div class={`service-card ${s.highlight ? 'service-card--highlight' : ''}`}>
+              <div class="card-badges">
+                <span class="rank-badge" style={`background: ${badgeColors[s.rank] ?? '#6B7280'}`}>第{s.rank}位</span>
+                <span class="tag-badge">{s.badge}</span>
               </div>
-              <div class="bg-red-50 rounded p-2">
-                <p class="text-xs font-bold text-red-700 mb-1">デメリット</p>
-                <p class="text-xs text-gray-700">{s.cons}</p>
+              <h3 class="card-name">{s.name}</h3>
+              <p class="card-tagline">{s.tagline}</p>
+              <ul class="feature-list">
+                {s.features.map((f) => (
+                  <li><span class="check">✓</span>{f}</li>
+                ))}
+              </ul>
+              <div class="pros-cons">
+                <div class="pros">
+                  <p class="pros-label">メリット</p>
+                  <p>{s.pros}</p>
+                </div>
+                <div class="cons">
+                  <p class="cons-label">デメリット</p>
+                  <p>{s.cons}</p>
+                </div>
               </div>
+              <p class="card-target">こんな人におすすめ: {s.recommended}</p>
+              <a
+                href={affiliateUrls[s.id]}
+                rel="sponsored"
+                target="_blank"
+                class={`cta-btn ${s.highlight ? 'cta-btn--highlight' : ''}`}
+              >
+                {s.name}の公式サイトを見る（{s.condition}）
+              </a>
             </div>
-            <p class="text-xs text-gray-500 mb-3">こんな人におすすめ: {s.recommended}</p>
-            <a
-              href={affiliateUrls[s.id]}
-              rel="sponsored"
-              target="_blank"
-              class={`inline-block w-full text-center py-3 px-6 rounded-lg font-bold text-sm transition-colors ${s.highlight ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
-            >
-              {s.name}の公式サイトを見る（{s.condition}）
-            </a>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
 
-    <!-- 目的別おすすめ組み合わせ -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-gray-800 mb-4">目的別おすすめ登録パターン</h2>
-      <div class="space-y-4">
-        {comparisons.map((c) => (
-          <div class="border border-blue-200 rounded-lg p-4 bg-blue-50">
-            <p class="font-bold text-blue-800 mb-1">🎯 {c.label}</p>
-            <p class="text-sm font-medium text-gray-800 mb-1">{c.services.join(' ＋ ')}</p>
-            <p class="text-xs text-gray-600">{c.reason}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+      <!-- 目的別おすすめ組み合わせ -->
+      <section class="section">
+        <h2 class="section-title">目的別おすすめ登録パターン</h2>
+        <div class="pattern-list">
+          {comparisons.map((c) => (
+            <div class="pattern-card">
+              <p class="pattern-label">🎯 {c.label}</p>
+              <p class="pattern-services">{c.services.join(' ＋ ')}</p>
+              <p class="pattern-reason">{c.reason}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-    <!-- FAQ -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-gray-800 mb-4">よくある質問</h2>
-      <div class="space-y-4">
-        {faqs.map((f) => (
-          <details class="border border-gray-200 rounded-lg">
-            <summary class="px-4 py-3 font-medium text-gray-800 cursor-pointer">{f.q}</summary>
-            <p class="px-4 pb-3 text-sm text-gray-600">{f.a}</p>
-          </details>
-        ))}
-      </div>
-    </section>
+      <!-- FAQ -->
+      <section class="section">
+        <h2 class="section-title">よくある質問</h2>
+        <div class="faq-list">
+          {faqs.map((f) => (
+            <details class="faq-item">
+              <summary class="faq-q">{f.q}</summary>
+              <p class="faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
 
-    <!-- 内部リンク -->
-    <section class="mb-6 p-4 bg-gray-50 rounded-lg">
-      <h2 class="text-base font-bold text-gray-800 mb-3">関連記事</h2>
-      <ul class="space-y-2 text-sm">
-        <li><a href="/school-ranking/" class="text-blue-600 hover:underline">→ プログラミングスクール比較ランキング【2026年最新】</a></li>
-        <li><a href="/agent-ranking/" class="text-blue-600 hover:underline">→ IT転職エージェントおすすめランキング【2026年最新】</a></li>
-        <li><a href="/blog/engineer-career-change-roadmap/" class="text-blue-600 hover:underline">→ 未経験からIT転職を成功させるロードマップ</a></li>
-      </ul>
-    </section>
-  </main>
+      <!-- 内部リンク -->
+      <section class="related-links">
+        <h2 class="related-title">関連記事</h2>
+        <ul>
+          <li><a href="/school-ranking/">→ プログラミングスクール比較ランキング【2026年最新】</a></li>
+          <li><a href="/agent-ranking/">→ IT転職エージェントおすすめランキング【2026年最新】</a></li>
+          <li><a href="/blog/engineer-career-change-roadmap/">→ 未経験からIT転職を成功させるロードマップ</a></li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .page-wrapper {
+    padding: 40px 0 80px;
+  }
+
+  .pr-note {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    background: #fef9c3;
+    border: 1px solid #fde68a;
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .page-lead {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  /* 比較テーブル */
+  .table-scroll {
+    overflow-x: auto;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .compare-table th {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .compare-table td {
+    border: 1px solid var(--color-border);
+    padding: 10px 12px;
+    color: var(--color-text-muted);
+    vertical-align: middle;
+  }
+
+  .compare-table .row-highlight {
+    background: #FFFBEB;
+  }
+
+  .td-name { font-weight: 600; color: var(--color-text); }
+  .td-fee { text-align: center; color: #16A34A; font-weight: 600; }
+
+  /* カードリスト */
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+
+  .service-card--highlight {
+    border-color: #F59E0B;
+    background: #FFFBEB;
+  }
+
+  .card-badges {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .rank-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  .tag-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #DBEAFE;
+    color: #1D4ED8;
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  .card-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+
+  .card-tagline {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+  }
+
+  .feature-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .feature-list li {
+    font-size: 0.8rem;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .check {
+    color: #16A34A;
+    font-weight: 700;
+  }
+
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .pros {
+    background: #F0FDF4;
+    border-radius: var(--radius);
+    padding: 12px;
+    font-size: 0.8rem;
+    color: var(--color-text);
+  }
+
+  .pros-label {
+    font-weight: 700;
+    color: #15803D;
+    margin-bottom: 4px;
+  }
+
+  .cons {
+    background: #FFF1F2;
+    border-radius: var(--radius);
+    padding: 12px;
+    font-size: 0.8rem;
+    color: var(--color-text);
+  }
+
+  .cons-label {
+    font-weight: 700;
+    color: #BE123C;
+    margin-bottom: 4px;
+  }
+
+  .card-target {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+  }
+
+  .cta-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 700;
+    background: var(--color-accent);
+    color: #fff;
+    transition: background 0.2s, opacity 0.2s;
+    cursor: pointer;
+  }
+
+  .cta-btn:hover {
+    background: var(--color-primary-mid);
+  }
+
+  .cta-btn--highlight {
+    background: #F59E0B;
+  }
+
+  .cta-btn--highlight:hover {
+    background: #D97706;
+  }
+
+  /* 目的別パターン */
+  .pattern-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pattern-card {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: var(--radius);
+    padding: 16px 20px;
+  }
+
+  .pattern-label {
+    font-weight: 700;
+    color: #1D4ED8;
+    margin-bottom: 4px;
+  }
+
+  .pattern-services {
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+  }
+
+  .pattern-reason {
+    font-size: 0.825rem;
+    color: var(--color-text-muted);
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+  }
+
+  .faq-q {
+    padding: 14px 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-q::-webkit-details-marker { display: none; }
+
+  .faq-q::before {
+    content: 'Q. ';
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .faq-a {
+    padding: 0 16px 14px;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+  }
+
+  /* 関連記事 */
+  .related-links {
+    background: #F8FAFC;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+  }
+
+  .related-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 12px;
+  }
+
+  .related-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .related-links a {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    transition: opacity 0.2s;
+  }
+
+  .related-links a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+  }
+
+  /* レスポンシブ */
+  @media (max-width: 640px) {
+    .page-title { font-size: 1.3rem; }
+    .feature-list { grid-template-columns: 1fr; }
+    .pros-cons { grid-template-columns: 1fr; }
+  }
+</style>
